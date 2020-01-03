@@ -11,7 +11,15 @@
 #### cmd工具cd到项目目录下
 ![](images/readme-img/em02.png)
 #### 运行nmp安装element
-	npm i element-ui -S
++ 在项目文件夹下安装
+
+		npm i element-ui -S
+
++ 在vuecli脚手架下安装使用element
+		vue create my-app
+		cd my-app
+		vue add element
+	
 ![](images/readme-img/em03.png)
 
 #### 查看安装结果
