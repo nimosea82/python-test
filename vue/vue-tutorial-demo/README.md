@@ -1,6 +1,15 @@
 # vue基本教程
 vue基本教程，在HTML中引入和使用vue
-## vue-cli4安装
->通过npm安装vue-cli4
+## 遇见vue
 
-#### 运行nmp安装vue-cli4
++ CDN
+
+通过html内引入
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+## 数据绑定
+### 语法
+
+## 指令
+
