@@ -66,7 +66,7 @@
 `v-else-if`必须要与v-if搭配使用，单独无法使用。
 + v-if="..." 结果为false才会执行下一步；
 + v-else-if="..."，表达式内结果为true，执行标签内容；
-+ v-else 以上表达式都为false，才会执行，v-else绑定的标签内容。
++ v-else 以上表达式都为false，才会执行v-else绑定的标签内容。
 
 #### v-else-if实例：v-else-if操作
 
