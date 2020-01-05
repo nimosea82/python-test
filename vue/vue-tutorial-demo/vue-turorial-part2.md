@@ -212,39 +212,62 @@ for循环指令和v-if是vue中最常用的几个指令，此指令之值，必�
  + `{{ item.text }}`每次循环，通过该方法输出item对象的text值；
  + 以上就是启用v-html的作用
  
-#### v-for实例：v-for操作2
+#### v-for实例：v-for操作2（参数1，参数2，参数3）
+
+在v-for指令中，可以指定参数2和参数3，参数2代表键值对名称，参数3代表循环的序号
 
 + 新建立一个html，命名为307.html
 + 添加以下内容到html中
 
 ```html
 		<div id="app">
-			<p>{{ name }}</p>
+			<h2>v-for 来遍历一个对象的属性</h2>
+			<p>{{ coder.name }}</p>
 			<ul>
-				<li v-for=" item in data">
-					{{ item.text }}
+				<li v-for=" item in coder">
+					{{ item }}
 				</li>
 			</ul>
+			
+			<h2>你也可以提供第二个的参数为 property 名称 (也就是键名)</h2>
+			<h4>用name来输出键名，该参数可以重命名</h4>
+			<p>{{ coder.name }}</p>
+			<ul>
+				<li v-for=" (item,name) in coder">
+					{{ name }}:{{ item }}
+				</li>
+			</ul>
+			
+			<h2>还可以用第三个参数作为索引</h2>
+			<h4>用index来输出索引,该参数可重命名</h4>
+			<p>{{ coder.name }}</p>
+			<ul>
+				<li v-for=" (item,name,index) in coder">
+					{{ index }}.{{ name }}:{{ item }}
+				</li>
+			</ul>
+								
 		</div>
 		<script>
 			new Vue({
 				el: "#app",
 				data: {
+					coder:{
 					name:"一个苦逼的程序猿",	
 					age:35,
 					address:"浙江某山洞",
-					habit:"漂亮的姑娘"
-					
+					habit:"漂亮的姑娘",
+					}					
 				}
 			})
 		</script>
 ```
 
- ![](images/readme-img/307.png)
+ ![](images/readme-img/308.png)
  
- + `v-for=" item in items"`命名一个变量item,通过v-for历遍items数组中的对象；
- + `{{ item.text }}`每次循环，通过该方法输出item对象的text值；
- + 以上就是启用v-html的作用
+ + `(item,name)`第二个参数name为键名，如coder键值对中的name、age等，不一定用name命名，可以任意取变量名。
+ + `(item,name,index)`第三个参数index为循环序号，每次循环，通过该方法输出序号，不一定要用index，可以任意取变量名；
+
  
  
  
