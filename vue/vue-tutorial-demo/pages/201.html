@@ -3,22 +3,22 @@
 	<head>
 		<meta charset="utf-8">
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<title>vue201</title>
+		<title>自动更新数据</title>
 	</head>
 	<body>
-		<div id="v1">
-			name:{{name}}
-			age:{{age}}
+		<div id="app">
+			<p>姓名:{{ name }}</p>
+			<p>年龄:{{ age }}</p>
+			<button v-on:click="name='慧玩编程',age=2 ">更新数据</button>
 		</div>
 		<script>
-			new Vue({
-				el:"#v1",
+			var vm = new Vue({
+				el:"#app",
 				data:{
-					name:"heloo world",
-					age:15
+					name:"vue编程",
+					age:4				
 				}
-			})
-			
+			})			
 		</script>
 	</body>
 </html>

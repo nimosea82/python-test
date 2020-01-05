@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 引入vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>一个苦逼的程序猿</title>
+	</head>
+	<body>
+		<div id="app">
+			<h2>v-for 来遍历一个对象的属性</h2>
+			<p>{{ coder.name }}</p>
+			<ul>
+				<li v-for=" item in coder">
+					{{ item }}
+				</li>
+			</ul>
+			
+			<h2>你也可以提供第二个的参数为 property 名称 (也就是键名)</h2>
+			<h4>用name来输出键名，该参数可以重命名</h4>
+			<p>{{ coder.name }}</p>
+			<ul>
+				<li v-for=" (item,name) in coder">
+					{{ name }}:{{ item }}
+				</li>
+			</ul>
+			
+			<h2>还可以用第三个参数作为索引</h2>
+			<h4>用index来输出索引,该参数可重命名</h4>
+			<p>{{ coder.name }}</p>
+			<ul>
+				<li v-for=" (item,name,index) in coder">
+					{{ index }}.{{ name }}:{{ item }}
+				</li>
+			</ul>
+								
+		</div>
+		<script>
+			new Vue({
+				el: "#app",
+				data: {
+					coder:{
+					name:"一个苦逼的程序猿",	
+					age:35,
+					address:"浙江某山洞",
+					habit:"漂亮的姑娘",
+					}					
+				}
+			})
+		</script>
+	</body>
+</html>

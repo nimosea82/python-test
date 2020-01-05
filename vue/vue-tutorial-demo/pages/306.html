@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 引入vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>程序猿六大标签</title>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{ text }}</p>
+			<ul>
+				<li v-for=" item in items">
+					{{ item.text }}
+				</li>
+			</ul>
+		</div>
+		<script>
+			new Vue({
+				el: "#app",
+				data: {
+					text:"程序猿六大标签",
+					items: [
+						{text: '秃头'},
+						{text: '格子衫'},
+						{text: '邋遢'},
+						{text: '死宅'},
+						{text: '无趣'},
+						{text: '动漫'}
+					]
+				}
+			})
+		</script>
+	</body>
+</html>
