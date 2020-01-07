@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 引入vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>v-model双向绑定input</title>
+	</head>
+	<body>
+		
+		<div id="app">	
+			<p>输入名字：<input v-model="user.name" /></p>
+			<p>v-model绑定的名字:{{ user.name }}</p>
+			
+		</div>
+		<script>
+			new Vue({
+				el: "#app",
+				data: {
+					user:{
+						id:1,
+						name:"白晶晶",
+						age:18						
+					}					
+				}
+			})
+		</script>
+	</body>
+</html>

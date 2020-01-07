@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 引入vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>v-model下拉选择框单选框</title>
+	</head>
+	<body>
+		
+		<div id="app">	
+			<p>单选框</p>
+			
+			  <input type="radio" id="small" value="small_value" v-model="picked">
+			 <!-- for属性要与上面id属性一致 -->
+			  <label for="small">small</label>
+			  <br>
+			  
+			  <input type="radio" id="big" value="big_value" v-model="picked">
+			  <label for="big">big</label>
+			  <br>		
+			<p>picked:{{ picked }}</p>		
+			
+		
+		</div>
+		<script>
+			new Vue({
+				el: "#app",
+				data: {
+					picked:''									
+				}				
+			})
+		</script>
+	</body>
+</html>

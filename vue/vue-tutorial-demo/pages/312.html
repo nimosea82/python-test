@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 引入vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>v-model下拉选择框对象绑定</title>
+	</head>
+	<body>
+		
+		<div id="app">	
+			<p>复选框</p>			
+			<input type="checkbox" id="one" :value="items[0].id" v-model.lazy="checkedNames">
+			<label for="one">{{ items[0].name }}</label>
+			<input type="checkbox" id="two" :value="items[1].id"  v-model.lazy="checkedNames">
+			<label for="two">{{ items[1].name }}</label>
+			<input type="checkbox" id="three" :value="items[2].id"  v-model.lazy="checkedNames">
+			<label for="three">{{ items[2].name }}</label>
+			<br>			
+			<span>Checked names: {{ checkedNames }}</span>			
+
+		</div>
+		<script>
+			new Vue({
+				el: "#app",
+				data: {
+					checkedNames:[],
+					items:[
+						{id:1,name:"白晶晶"},
+						{id:2,name:"孙悟空"},
+						{id:3,name:"猪悟能"},
+					]										
+				}				
+			})
+		</script>
+	</body>
+</html>

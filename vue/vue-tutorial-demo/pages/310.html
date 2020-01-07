@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 引入vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>v-model下拉选择框对象绑定</title>
+	</head>
+	<body>
+		
+		<div id="app">	
+			<p>下拉框</p>
+			<select v-model="selected">
+				<option v-for="item in items" :label="item.name" :value="item"></option>
+			</select>
+			<p>Select:id:{{ selected.id }}</p>	
+			<p>name:{{ selected.name }}</p>			
+		</div>
+		<script>
+			new Vue({
+				el: "#app",
+				data: {
+					selected:'',
+					items:[
+						{id:1,name:"白晶晶"},
+						{id:2,name:"孙悟空"},
+						{id:3,name:"猪悟能"},
+					]										
+				}				
+			})
+		</script>
+	</body>
+</html>

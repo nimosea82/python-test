@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 引入vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>v-for迭代实例</title>
+	</head>
+	<body>
+		
+		<div id="app">	
+			<p>迭代普通数组:</p>
+			<p v-for="(item,i) in list">--索引值--{{i}}   --每一项--{{item}}</p>
+			<p>迭代对象数组:</p>
+			<p v-for="(user,i) in listObject">--id--{{user.id}}   --姓名--{{user.name}}</p>
+			<p>迭代对象:</p>
+			<p v-for="(val,key) in user">--键是--{{key}}  --值是--{{val}}</p>			
+		</div>
+		<script>
+			new Vue({
+				el: "#app",
+				data: {
+					list:[1,2,3,4,5,6],
+					listObject:[
+						{id:1,name:"唐三藏",age:40},
+						{id:2,name:"孙悟空",age:35},
+						{id:3,name:"猪悟能",age:25},
+						{id:4,name:"沙悟净",age:23},
+						{id:5,name:"敖烈",age:21},
+					],
+					user:{
+						id:1,
+						name:"白晶晶",
+						age:18						
+					}					
+				}
+			})
+		</script>
+	</body>
+</html>

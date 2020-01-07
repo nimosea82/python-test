@@ -174,7 +174,7 @@
 ### v-for
 for循环指令和v-if是vue中最常用的几个指令，此指令之值，必须使用特定语法 alias in expression ，为当前遍历的元素提供别名。
 
-#### v-for实例：v-for操作1
+#### v-for实例：v-for基本迭代
 
 + 新建立一个html，命名为306.html
 + 添加以下内容到html中
@@ -212,7 +212,7 @@ for循环指令和v-if是vue中最常用的几个指令，此指令之值，必�
  + `{{ item.text }}`每次循环，通过该方法输出item对象的text值；
  + 以上就是启用v-html的作用
  
-#### v-for实例：v-for操作2（参数1，参数2，参数3）
+#### v-for实例：v-for多参数（参数1，参数2，参数3）
 
 在v-for指令中，可以指定参数2和参数3，参数2代表键值对名称，参数3代表循环的序号
 
@@ -269,5 +269,207 @@ for循环指令和v-if是vue中最常用的几个指令，此指令之值，必�
  + `(item,name,index)`第三个参数index为循环序号，每次循环，通过该方法输出序号，不一定要用index，可以任意取变量名；
 
  
+ #### v-for实例：v-for迭代实例
+ 
+ 普通数组，对象数组，迭代对象、迭代数字的演示说明
+ 
++ 新建立一个html，命名为308.html
++ 添加以下内容到html中
+
+ ```html
+ <div id="app">
+ 	<p>迭代普通数组:</p>
+ 	<p v-for="(item,i) in list">--索引值--{{i}}   --每一项--{{item}}</p>
+ 	<p>迭代对象数组:</p>
+ 	<p v-for="(user,i) in listObject">--id--{{user.id}}   --姓名--{{user.name}}</p>
+ 	<p>迭代对象:</p>
+ 	<p v-for="(val,key) in user">--键是--{{key}}  --值是--{{val}}</p>			
+ </div>
+ <script>
+ 	new Vue({
+ 		el: "#app",
+ 		data: {
+ 			list:[1,2,3,4,5,6],
+ 			listObject:[
+ 				{id:1,name:"唐三藏",age:40},
+ 				{id:2,name:"孙悟空",age:35},
+ 				{id:3,name:"猪悟能",age:25},
+ 				{id:4,name:"沙悟净",age:23},
+ 				{id:5,name:"敖烈",age:21},
+ 			],
+ 			user:{
+ 				id:1,
+ 				name:"白晶晶",
+ 				age:18						
+ 			}					
+ 		}
+ 	})
+ </script>
+``` 
+ 
+![](images/readme-img/309.png)
+  
+  
+ ### v-model 
+ 
+数据双向绑定,一般用于input、textarea、select中使用，它其实是一个语法糖。
+
+ #### v-model 实例：v-model双向绑定input
+ 
++ 新建立一个html，命名为309.html
++ 添加以下内容到html中
+
+ ```html
+		<div id="app">	
+			<p>输入名字：<input v-model="user.name" /></p>
+			<p>v-model绑定的名字:{{ user.name }}</p>
+			
+		</div>
+		<script>
+			new Vue({
+				el: "#app",
+				data: {
+					user:{
+						id:1,
+						name:"白晶晶",
+						age:18						
+					}					
+				}
+			})
+		</script>
+ ``` 
+
+
+![](images/readme-img/310.png)
+在输入框改变输入的文字后，绑定的对象`name`属性也跟着变化。
+
+v-mode可以添加修饰符，获得意想不到的效果
+
++ .lazy
+
+ 在默认情况下， v-model 在 input 事件中同步输入框的值与数据，但你可以添加一个修饰符 lazy ，从而转变为在 change 事件中同步：
+ 在 "change" 而不是 "input" 事件中更新
+ ```html
+ <input v-model.lazy="msg" >
+  ```
+
++ .trim
+
+ 如果要自动过滤用户输入的首尾空格，可以添加 trim 修饰符到 v-model 上过滤输入：
+
+ ```html
+ <input v-model.trim="msg">
+ ```
+ 
++ .number
+
+ 如果想自动将用户的输入值转为 Number 类型（如果原值的转换结果为 NaN 则返回原值），可以添加一个修饰符 number 给 v-model 来处理输入值：
+ 
+ ```html
+ <input v-model.number="age" type="number">
+ ```
+
+ #### v-model 实例：v-model双向绑定select
+ 
++ 新建立一个html，命名为310.html
++ 添加以下内容到html中
+
+ ```html
+ <div id="app">
+ 	<p>下拉框</p>
+ 	<select v-model="selected">
+ 		<option v-for="item in items" :label="item.name" :value="item"></option>
+ 	</select>
+ 	<p>Select:id:{{ selected.id }}</p>
+	<p>name:{{ selected.name }}</p>			
+ </div>
+ <script>
+ 	new Vue({
+ 		el: "#app",
+ 		data: {
+ 			selected:'',
+ 			items:[
+ 				{id:1,name:"白晶晶"},
+ 				{id:2,name:"孙悟空"},
+ 				{id:3,name:"猪悟能"},
+ 			]										
+ 		}				
+ 	})
+ </script>
+ ```
+
+ 该实例通过v-model绑定了一个vue对象中的`selected`对象,通过v-for循环将item对象绑定到option中，在其他标签中可以调用`selected`,以此来显示所需要的值。
+ ![](images/readme-img/311.png)
+ 
+ 选择下拉框的时候，可以获得id值和name值。
+ 
+#### v-model 实例：v-model双向绑定单选框
+ 
++ 新建立一个html，命名为311.html
++ 添加以下内容到html中
+
+
+ ```html
+ 	<div id="app">	
+ 		<p>单选框</p>
+ 		
+ 		  <input type="radio" id="small" value="small_value" v-model="picked">
+ 		 <!-- for属性要与上面id属性一致 -->
+ 		  <label for="small">small</label>
+ 		  <br>
+ 		  
+ 		  <input type="radio" id="big" value="big_value" v-model="picked">
+ 		  <label for="big">big</label>
+ 		  <br>		
+ 		<p>picked:{{ picked }}</p>		
+ 		
+ 	
+ 	</div>
+ 	<script>
+ 		new Vue({
+ 			el: "#app",
+ 			data: {
+ 				picked:''									
+ 			}				
+ 		})
+ 	</script>
+ ```
  
  
+ 
+#### v-model 实例：v-model双向绑定复选框
+ 
++ 新建立一个html，命名为312.html
++ 添加以下内容到html中
+
+
+ ```html
+ <div id="app">
+ 	<p>复选框</p>			
+ 	<input type="checkbox" id="one" :value="items[0].id" v-model.lazy="checkedNames">
+ 	<label for="one">{{ items[0].name }}</label>
+ 	<input type="checkbox" id="two" :value="items[1].id"  v-model.lazy="checkedNames">
+ 	<label for="two">{{ items[1].name }}</label>
+ 	<input type="checkbox" id="three" :value="items[2].id"  v-model.lazy="checkedNames">
+ 	<label for="three">{{ items[2].name }}</label>
+ 	<br>			
+ 	<span>Checked names: {{ checkedNames }}</span>			
+ 	
+ </div>
+ <script>
+ 	new Vue({
+ 		el: "#app",
+ 		data: {
+ 			checkedNames:[],
+ 			items:[
+ 				{id:1,name:"白晶晶"},
+ 				{id:2,name:"孙悟空"},
+ 				{id:3,name:"猪悟能"},
+ 			]										
+ 		}				
+ 	})
+ </script>
+ 
+ ```
+ 
+ ![](images/readme-img/312.png)
