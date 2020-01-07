@@ -9,8 +9,9 @@
 	<body>
 		
 		<div id="app">	
-			<p>输入名字：<input v-model="user.name" /></p>
+			<p>输入名字：<input v-model="user.name"  /></p>
 			<p>v-model绑定的名字:{{ user.name }}</p>
+			<p>输入名字(加入lazy效果)：<input v-model.lazy="user.name"  /></p>
 			
 		</div>
 		<script>

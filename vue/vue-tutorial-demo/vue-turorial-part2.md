@@ -473,3 +473,167 @@ v-mode可以添加修饰符，获得意想不到的效果
  ```
  
  ![](images/readme-img/312.png)
+ 
+ #### v-model 实例：v-model双向绑定复选框用v-for方式
+ 
++ 新建立一个html，命名为313.html
++ 添加以下内容到html中
+
+
+ ```html
+ <div id="app">
+ <p>复选框v-for</p>
+ 	<span v-for="item in items">			
+ 		<input type="checkbox"  :id="item.id" :value="item.id" v-model.lazy="checkedNames">
+ 		<label  :for="item.id">{{ item.name }}</label>
+ 	</span>
+ 	<br>
+ 	<span>Checked names: {{ checkedNames }}</span>			
+ 		
+ </div>
+ <script>
+ 	new Vue({
+ 		el: "#app",
+ 		data: {
+ 			checkedNames:[],
+ 			items:[
+ 				{id:1,name:"白晶晶"},
+ 				{id:2,name:"孙悟空"},
+ 				{id:3,name:"猪悟能"},
+ 			]										
+ 		}				
+ 	})
+ </script>
+ 
+ ```
+ 
+效果和312.html案例一致
+
+#### v-model 实例：v-model双向绑定input筛选
+ 
++ 新建立一个html，命名为314.html
++ 添加以下内容到html中
+
+
+ ```html
+ <div id="app">
+   <input v-model='search' />
+   <ul>
+ 	<li v-for="item in items">
+ 		<label>价格</label><span v-html="item.name"></span>
+ 		<label>￥</label><span v-html="item.price"></span>
+   </ul>
+ </div>
+ <script type="text/javascript">
+ 	new Vue({
+ 	  el: '#app',
+ 	  data: {
+ 	    search: '',
+ 	    products: [{
+ 	      name: '苹果',
+ 	      price: 25
+ 	    }, {
+ 	      name: '香蕉',
+ 	      price: 15
+ 	    }, {
+ 	      name: '雪梨',
+ 	      price: 65
+ 	    }, {
+ 	      name: '宝马',
+ 	      price: 2500
+ 	    }, {
+ 	      name: '奔驰',
+ 	      price: 10025
+ 	    }, {
+ 	      name: '柑橘',
+ 	      price: 15
+ 	    }, {
+ 	      name: '奥迪',
+ 	      price: 25
+ 	    }]
+ 	  },
+ 	  computed: {
+ 	    items: function() {
+ 	      var _search = this.search;
+ 	      if (_search) {
+ 	        return this.products.filter(function(product) {
+ 	          return Object.keys(product).some(function(key) {
+ 	            return String(product[key]).toLowerCase().indexOf(_search) > -1
+ 	          })
+ 	        })
+ 	      }
+ 	
+ 	      return this.products;
+ 	    }
+ 	  }
+ 	})
+ </script>	
+ 
+ ```
+
+
+### v-bind
+v-bind指令用给HTML标签设置属性
+
+
+ ```html
+<!-- 完整语法 -->
+<a v-bind:href="url"></a>
+<!-- 缩写 -->
+<a :href="url"></a>
+
+ ```
+
+
+ 
+#### v-model 实例：v-bind实例
+
++ 新建立一个html，命名为315.html
++ 添加以下内容到html中
+
+ ```html
+	<body>
+		<div id="app">
+			<p v-bind:id="id">v-bind绑定id属性</p>		
+		
+		</div>
+		<script>
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					id:'myid'									
+				}				
+			})
+		</script>
+		
+	</body>
+ ```	
+ 
+ v-bind绑定了div的id为vue对象中的id属性，`<div id="myid">v-bind绑定id属性</div>`
+ + 完整语法 `<p v-bind:id="id">v-bind绑定id属性</p>`
+ + 简化语法 `<p :id="id">v-bind绑定id属性</p>`
+
+ 以上效果一致
+ 
+ ### v-on
+v-bind指令用给HTML标签设置属性
+
+```html
+<!-- 完整语法 -->
+<button v-on:click="dothis"></button>
+<!-- 缩写 -->
+<button @click="dothis"></button>
+
+ <!-- 阻止单击事件冒泡 -->
+ <a v-on:click.stop="doThis"></a>
+ <!-- 提交事件不再重载页面 -->
+ <form v-on:submit.prevent="onSubmit"></form>
+ <!-- 修饰符可以串联  -->
+ <a v-on:click.stop.prevent="doThat"></a>
+ <!-- 只有修饰符 -->
+ <form v-on:submit.prevent></form>
+ <!-- 添加事件侦听器时使用事件捕获模式 -->
+ <div v-on:click.capture="doThis">...</div>
+ <!-- 只当事件在该元素本身（比如不是子元素）触发时触发回调 -->
+ <div v-on:click.self="doThat">...</div>
+```

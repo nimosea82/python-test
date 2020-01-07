@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>v-bind</title>		
+	</head>
+	<body>
+		<div id="app">
+			<p v-bind:id="id">v-bind绑定id属性</p>		
+		
+		</div>
+		<script>
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					id:'myid'									
+				}				
+			})
+		</script>
+		
+	</body>
+</html>

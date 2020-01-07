@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 引入vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>v-model复选框循环绑定</title>
+	</head>
+	<body>
+		
+		<div id="app">	
+		<p>复选框v-for</p>
+			<span v-for="item in items">			
+				<input type="checkbox"  :id="item.id" :value="item.id" v-model.lazy="checkedNames">
+				<label  :for="item.id">{{ item.name }}</label>
+			</span>
+			<br>
+			<span>Checked names: {{ checkedNames }}</span>			
+				
+		</div>
+		<script>
+			new Vue({
+				el: "#app",
+				data: {
+					checkedNames:[],
+					items:[
+						{id:1,name:"白晶晶"},
+						{id:2,name:"孙悟空"},
+						{id:3,name:"猪悟能"},
+					]										
+				}				
+			})
+		</script>
+	</body>
+</html>
+
