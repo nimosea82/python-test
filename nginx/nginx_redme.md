@@ -135,7 +135,7 @@ http {
     server {
 		#SSL 访问端口号为 443
         listen 443 ssl;
-		 #填写绑定证书的域名
+		#填写绑定证书的域名
         server_name  www.yh2j.com;
 		#启用 SSL 功能
 		#ssl on;
@@ -211,4 +211,68 @@ http {
 
 }
 
-``
+```
+
+```
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+    types_hash_max_size 2048;
+
+    include             /etc/nginx/mime.types;
+    default_type        application/octet-stream;
+
+    # Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include
+    # for more information.
+    include /etc/nginx/conf.d/*.conf;
+
+    server {
+        listen       80 default_server;
+		server_name 129.211.30.22;
+        location =/yhey/ { #访问http://127.0.0.1/yhey 跳转
+          proxy_pass http://60.191.172.98:8142/api/;
+        }
+
+        location =/ { #访问http://127.0.0.1 跳转
+          proxy_pass https://www.baidu.com/;
+        }
+
+
+        error_page 404 /404.html;
+            location = /40x.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+            location = /50x.html {
+        }
+      
+
+    }
+
+
+}
+```
+
+
+
