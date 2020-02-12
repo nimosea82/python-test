@@ -1,0 +1,36 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+ 
+
+}
+
+.block_salary{
+  display: flex;
+  flex-direction: column;
+  width: 700rpx;
+  margin: 3px;
+
+  background-color:  rgb(240, 237, 237);
+  border-radius: 2px;
+  
+}
+
+.block_title{
+  background-color: #e4e9eb;
+  height: 25px;
+  padding: 5px;
+  color: #353535;
+  
+}
+
+.block_content{
+  background-color: #f3f3f3;
+  height: 50px;
+  padding: 5px;
+  font-size: 30px;
+  color: #576B95;
+  text-align: center;
+}
+

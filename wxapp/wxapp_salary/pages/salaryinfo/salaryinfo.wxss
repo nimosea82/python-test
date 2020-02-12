@@ -1,0 +1,65 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  padding: 5px; 
+
+}
+
+.c_salary{
+  display: flex;
+  flex-direction: column;
+  width: 700rpx;
+  margin: 3px;
+  background-color:  rgb(240, 237, 237);
+  border-radius: 2px;
+  
+}
+
+.c_title{
+  background-color: #e4e9eb;
+  height: 25px;
+  padding: 5px;
+  color: #353535;
+  
+}
+
+.c_content{
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f7f7;
+  height: 70px;
+  padding: 5px;
+  color: #576B95;
+
+}
+
+
+.b_salary{
+  display: flex;
+  flex-direction: column;
+  width: 700rpx;
+  margin: 3px;
+  background-color:  rgb(240, 237, 237);
+  border-radius: 2px;
+  
+}
+
+.b_title{
+  background-color: #e4e9eb;
+  height: 25px;
+  padding: 5px;
+  color: #353535;
+  
+}
+
+.b_content{
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f7f7;
+}
+
+.b_item{
+  padding: 5px;
+  color: #576B95;
+  font-size: medium;
+}

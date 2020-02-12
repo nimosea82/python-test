@@ -1,0 +1,107 @@
+<view class="container more">
+	<view class="user flex-wrp">
+		<view class="avatar flex-item">
+
+		</view>
+		<view class="user-info flex-item">
+			<text class="userinfo-nickname">{{cityName+'新冠肺炎实时数据'}}</text>
+			<text class="edit">数据来源台州发布公众号</text>
+		</view>
+	</view>
+
+	<view class="user flex-wrp">
+
+		<view class="vap_head">
+			<view class="vap_head_title">{{cityName}}疫情
+			</view>
+			<view class="vap_head_content">
+				<view class="vap_head_info">
+					<view class="vap_head_date">
+						<text >{{'截止2月4日24时'}}</text>
+					</view>
+					<view class="vap_head_number">
+						<text >{{'0'}}</text>
+					</view>
+					<view class="vap_head_text">
+						确诊病例
+					</view>
+				</view>
+				<view class="vap_head_info">
+					<view class="vap_head_date">
+						<text >{{'较2月3日24时'}}</text>
+					</view>
+					<view class="vap_head_number_cure">
+						<text >{{'+0'}}</text>
+					</view>
+					<view class="vap_head_text">
+						新增
+					</view>
+				</view>
+			</view>
+		</view>
+
+
+	</view>
+
+
+	<view class="my" >
+		<view class="my-item flex-wrp">
+			<view class="vap_body_box">
+				<view class="vap_body_city">2020-02-04</view>
+				<view class="vap_body_increase">
+					+
+					<text class="vap_body_increase_text">{{0}} </text>
+				</view>
+				<view class="vap_body_number">确诊
+					<text class="vap_body_number_text">{{0}}</text>
+				</view>
+			</view>
+		</view>
+
+		<view class="my-item flex-wrp">
+			<view class="vap_body_box">
+				<view class="vap_body_city">2020-02-03</view>
+				<view class="vap_body_increase">
+					+
+					<text class="vap_body_increase_text">{{0}} </text>
+				</view>
+				<view class="vap_body_number">确诊
+					<text class="vap_body_number_text">{{0}}</text>
+				</view>
+			</view>
+		</view>
+
+		<view class="my-item flex-wrp">
+			<view class="vap_body_box">
+				<view class="vap_body_city">2020-02-02</view>
+				<view class="vap_body_increase">
+					+
+					<text class="vap_body_increase_text">{{0}} </text>
+				</view>
+				<view class="vap_body_number">确诊
+					<text class="vap_body_number_text">{{0}}</text>
+				</view>
+			</view>
+		</view>
+
+		<view class="my-item flex-wrp">
+			<view class="vap_body_box">
+				<view class="vap_body_city">2020-02-01</view>
+				<view class="vap_body_increase">
+					+
+					<text class="vap_body_increase_text">{{0}} </text>
+				</view>
+				<view class="vap_body_number">确诊
+					<text class="vap_body_number_text">{{0}}</text>
+				</view>
+			</view>
+		</view>
+
+
+
+	</view>
+
+	
+
+
+</view>

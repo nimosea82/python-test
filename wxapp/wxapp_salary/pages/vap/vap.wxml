@@ -1,0 +1,22 @@
+<view class="container">
+	<view class="view_title">
+		<input type="password" class="send_input" placeholder="输入验证密码" bindinput="userPSWinput" value="{{vap_psw}}"></input>
+    <input type="number" class="send_input" placeholder="输入查询的手机号码" bindinput="userMobileInput"></input>
+		<button bindtap="getVapInfo" type="primary" disabled="{{isDisabled}}">查询</button>
+    <view class="c_err">{{errmsg}}</view>
+	</view>
+
+	<block wx:for="{{ vap_array }}" wx:for-index="idx" wx:for-item="vap" wx:key="id">
+		<view id="{{vap.id}}" class="block_salary">
+			<view class="block_title">手机号码：{{vap.mobile}}</view>
+      
+			<view class="block_content">{{vap.uname}}</view>
+      <view class="block_other">身份证号：{{vap.idcard}}</view>
+      <view class="block_other">地址信息：{{vap.idcard_address}}</view>
+      <view class="block_other">湖北人：{{vap.is_hubei}}</view>
+      <view class="block_other">备注2：{{vap.mark1}}</view>
+      <view class="block_other">备注2：{{vap.mark2}}</view>
+      
+		</view>
+	</block>
+</view>

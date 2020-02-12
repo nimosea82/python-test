@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="c_block">
+    <view class="c_title">请输入二医信息系统账号和密码</view>
+    <view>
+      <input type="text" placeholder="输入账号" class="c_input" bindinput="userAccountInput"></input>
+    </view>
+    <view>
+      <input type="password" placeholder="输入密码" class="c_input" bindinput="userPasswordInput"></input>
+    </view>
+    <view class="c_err">
+      {{errmsg}}
+    </view>
+    <button class="userbutton" type="primary" bindtap="bindUserLogin">登录</button>
+  </view>
+</view>

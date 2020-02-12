@@ -1,0 +1,201 @@
+<view class="container more">
+	<view class="user flex-wrp">
+		<view class="avatar flex-item">
+			<image class="userinfo-avatar" src="/images/indexshare2.png" mode="cover"></image>
+		</view>
+		<view class="user-info flex-item">
+			<text class="userinfo-nickname">{{'台州新冠肺炎实时数据'}}</text>
+			<text class="edit">数据来源台州发布公众号(点击右上角分享小程序)</text>
+		</view>
+	</view>
+
+	<view class="user flex-wrp">
+		<view class="vap_head">
+			<view class="vap_head_title">{{id_date_text}}
+			</view>
+			<view class="vap_head_content">
+				<view class="vap_head_info">
+					<view class="vap_head_before" bindtap="bindDayBefore">
+						<text >前一天</text>
+					</view>
+					<view class="vap_head_number">
+						<text >{{mainCityCheckedNumber}}</text>
+					</view>
+					<view class="vap_head_text">
+						确诊病例<text class="vap_head_checked_text">(+{{mainCityCheckedNumberIncrease}})</text>
+
+					</view>
+				</view>
+				<view class="vap_head_info">
+					<view class="vap_head_next" bindtap="bindDayNext">
+						<text >后一天</text>
+					</view>
+					<view class="vap_head_number_cure">
+						<text >{{mainCityCureNumber}}</text>
+					</view>
+					<view class="vap_head_text">
+						治愈
+					</view>
+				</view>
+			</view>
+		</view>
+
+
+	</view>
+
+
+	<view class="my">
+
+		<view class="my-item flex-wrp">
+			<view class="vap_body_box">
+				<view class="vap_body_city">玉环</view>
+				<view class="vap_body_increase">
+					+
+					<text class="vap_body_increase_text">{{yhIncrease}} </text>
+				</view>
+				<view class="vap_body_number">确诊
+					<text class="vap_body_number_text">{{yhChecked}}</text>
+				</view>
+			</view>
+		</view>
+
+		<view class="my-item flex-wrp">
+			<view class="vap_body_box">
+				<view class="vap_body_city">温岭</view>
+				<view class="vap_body_increase">
+					+
+					<text class="vap_body_increase_text">{{wlIncrease}} </text>
+				</view>
+				<view class="vap_body_number">确诊
+					<text class="vap_body_number_text">{{wlChecked}}</text>
+				</view>
+			</view>
+		</view>
+
+		<view class="my-item flex-wrp">
+			<view class="vap_body_box">
+				<view class="vap_body_city">路桥</view>
+				<view class="vap_body_increase">
+					+
+					<text class="vap_body_increase_text">{{lqIncrease}} </text>
+				</view>
+				<view class="vap_body_number">确诊
+					<text class="vap_body_number_text">{{lqChecked}}</text>
+				</view>
+			</view>
+		</view>
+
+		<view class="my-item flex-wrp">
+			<view class="vap_body_box">
+				<view class="vap_body_city">椒江</view>
+				<view class="vap_body_increase">
+					+
+					<text class="vap_body_increase_text">{{jjIncrease}} </text>
+				</view>
+				<view class="vap_body_number">确诊
+					<text class="vap_body_number_text">{{jjChecked}}</text>
+				</view>
+			</view>
+		</view>
+
+		<view class="my-item flex-wrp">
+			<view class="vap_body_box">
+				<view class="vap_body_city">黄岩</view>
+				<view class="vap_body_increase">
+					+
+					<text class="vap_body_increase_text">{{hyIncrease}} </text>
+				</view>
+				<view class="vap_body_number">确诊
+					<text class="vap_body_number_text">{{hyChecked}}</text>
+				</view>
+			</view>
+		</view>
+
+		<view class="my-item flex-wrp">
+			<view class="vap_body_box">
+				<view class="vap_body_city">临海</view>
+				<view class="vap_body_increase">
+					+
+					<text class="vap_body_increase_text">{{lhIncrease}} </text>
+				</view>
+				<view class="vap_body_number">确诊
+					<text class="vap_body_number_text">{{lhChecked}}</text>
+				</view>
+			</view>
+		</view>
+
+		<view class="my-item flex-wrp">
+			<view class="vap_body_box">
+				<view class="vap_body_city">仙居</view>
+				<view class="vap_body_increase">
+					+
+					<text class="vap_body_increase_text">{{xjIncrease}} </text>
+				</view>
+				<view class="vap_body_number">确诊
+					<text class="vap_body_number_text">{{xjChecked}}</text>
+				</view>
+			</view>
+		</view>
+
+		<view class="my-item flex-wrp">
+			<view class="vap_body_box">
+				<view class="vap_body_city">天台</view>
+				<view class="vap_body_increase">
+					+
+					<text class="vap_body_increase_text">{{ttIncrease}} </text>
+				</view>
+				<view class="vap_body_number">确诊
+					<text class="vap_body_number_text">{{ttChecked}}</text>
+				</view>
+			</view>
+		</view>
+
+		<view class="my-item flex-wrp">
+			<view class="vap_body_box">
+				<view class="vap_body_city">三门</view>
+				<view class="vap_body_increase">
+					+
+					<text class="vap_body_increase_text">{{smIncrease}} </text>
+				</view>
+				<view class="vap_body_number">确诊
+					<text class="vap_body_number_text">{{smChecked}}</text>
+				</view>
+			</view>
+		</view>
+
+	</view>
+
+	<view class="my">
+		<view class="my-item flex-wrp">
+			<view class="vap_person_box">
+				<view class="vap_person_date">
+					新增病例情况
+				</view>
+				<view class="vap_person_content">
+					<block wx:for="{{ personArry }}" wx:for-index="idx" wx:for-item="vap" wx:key="id">
+						<view class="vap_person_item">
+							{{vap.vap_person_text}}
+						</view>
+					</block>
+
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="my">
+		<view class="my-item flex-wrp">
+			<view class="myitem-icon flex-item">
+				<image src="../../../images/msg.png"></image>
+			</view>
+			<view class="myitem-name flex-item">
+				<input type="text" class="send_input" placeholder="欢迎留言提建议" bindinput="userMsginput"></input>
+				<button bindtap="setUserMsg" type="primary" disabled="{{isDisabled}}">提交留言</button>
+			</view>
+		</view>
+
+	</view>
+
+
+
+</view>

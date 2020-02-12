@@ -1,0 +1,64 @@
+<!--pages/salaryinfo/salaryinfo.wxml-->
+<view class="container"> 
+  <view class="c_salary">
+    <view class="c_title">
+      {{salaryInfo.RYXM}}-{{salaryInfo.GZNF}}年{{salaryInfo.GZYF}}月
+    </view>
+      <view class="c_content">
+      <view>{{"应发合计"}}({{salaryInfo.YFHJ}})</view>
+      <view>{{"扣款合计"}}({{salaryInfo.KKHJ}})</view>
+      <view>{{"实发合计"}}({{salaryInfo.SFHJ}})</view>
+    </view>
+  </view>
+<view class="b_salary">
+  <view class="b_title">工资明细</view>
+  <view class="b_content">
+    <view class="b_item">基本工资:{{salaryInfo.JBGZ}}</view>
+    <view class="b_item">薪级工资:{{salaryInfo.XJGZ}}</view>
+    <view class="b_item">护龄工资:{{salaryInfo.HLGZ}}</view>
+    <view class="b_item">特岗津贴:{{salaryInfo.TGJT}}</view>  
+    <view class="b_item">生活补贴:{{salaryInfo.SHBT}}</view>  
+    <view class="b_item">岗位津贴:{{salaryInfo.GWJT}}</view>
+    <view class="b_item">工龄补贴:{{salaryInfo.GLBT}}</view>
+    <view class="b_item">医药补贴:{{salaryInfo.YYBT}}</view>
+    <view class="b_item">护令补贴:{{salaryInfo.HLBT}}</view>  
+    <view class="b_item">护理津贴:{{salaryInfo.HLJT}}</view>  
+    <view class="b_item">临时性补贴:{{salaryInfo.LSXBT}}</view>
+    <view class="b_item">学历工资:{{salaryInfo.XLGZ}}</view>
+    <view class="b_item">工龄工资:{{salaryInfo.GLGZ}}</view>
+    <view class="b_item">绩效工资:{{salaryInfo.JXGZ}}</view>  
+    <view class="b_item">月目标奖:{{salaryInfo.YMBJ}}</view> 
+    <view class="b_item">误餐补贴:{{salaryInfo.WCBT}}</view>   
+    <view class="b_item">省定补贴:{{salaryInfo.SDBT}}</view>   
+    <view class="b_item">限定补贴:{{salaryInfo.XDBT}}</view>   
+    <view class="b_item">海岛补贴:{{salaryInfo.HDBT}}</view>   
+    <view class="b_item">粮价补贴:{{salaryInfo.LJBT}}</view>     
+    <view class="b_item">车补:{{salaryInfo.CB}}</view>   
+    <view class="b_item">考勤奖:{{salaryInfo.KQJ}}</view>   
+    <view class="b_item">其他补贴:{{salaryInfo.QT}}</view> 
+    <view class="b_item">医嘱补贴:{{salaryInfo.YZBT}}</view>   
+    <view class="b_item">晋升晋级增资:{{salaryInfo.JSJJZZ}}</view>  
+  </view>
+  <view class="b_title">扣款明细</view>
+  <view class="b_content">
+    <view class="b_item">工会费:{{salaryInfo.GHF}}</view> 
+    <view class="b_item">房租费:{{salaryInfo.FZF}}</view>   
+    <view class="b_item">公积金:{{salaryInfo.GJJ}}</view>   
+    <view class="b_item">工资扣除:{{salaryInfo.GZKC}}</view>   
+    <view class="b_item">养老金:{{salaryInfo.YLJ}}</view>   
+    <view class="b_item">职业年金:{{salaryInfo.ZYNJ}}</view>   
+    <view class="b_item">失业保险:{{salaryInfo.SYBX}}</view>  
+    <view class="b_item">医疗扣款:{{salaryInfo.YLBX}}</view> 
+    <view class="b_item">借款扣款:{{salaryInfo.JKKH}}</view>   
+    <view class="b_item">请假扣款:{{salaryInfo.QJKK}}</view>    
+    <view class="b_item">个人所得税:{{salaryInfo.GRSDS}}</view>   
+  </view>  
+  <view class="b_title">其他</view>
+  <view class="b_content">
+    <view class="b_item">日工资:{{salaryInfo.RGZ}}</view> 
+    <view class="b_item">备注说明:{{salaryInfo.BZSM}}</view>   
+  
+  </view>  
+</view>
+
+</view>

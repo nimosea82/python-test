@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/navigate/navigate",
+    "pages/logs/logs",
+    "pages/salarylist/salarylist",
+    "pages/salaryinfo/salaryinfo",
+    "pages/login/login",
+    "pages/bill/bill",
+    "pages/vap/vap",
+    "pages/vap/vapdata/vapdata",
+    "pages/food/orderfood/orderfood",
+    "pages/vap/vapcityinfo/vapcityinfo"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "玉二健OA",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
