@@ -8,35 +8,18 @@
 		</view>
 		<view class="user-info flex-item">
 			<text class="userinfo-nickname">{{userInfo.nickName}}</text>
-			<text class="edit">欢迎使用玉环第二健共体OA小程序</text>
+			<text class="edit">欢迎使用小雨美丽花园小程序</text>
 		</view>
 	</view>
 
 	<view class="my">
-
-		<view class="my-item flex-wrp" bindtap="bindUserLogin">
-			<view class="myitem-icon flex-item">
-				<image src="../../images/salary.png"></image>
-			</view>
-			<view class="myitem-name flex-item">
-				<text>我的工资条</text>
-			</view>
-		</view>
 
 		<view class="my-item flex-wrp" bindtap="bindBillInfo">
 			<view class="myitem-icon flex-item">
 				<image src="../../images/bill.png"></image>
 			</view>
 			<view class="myitem-name flex-item">
-				<text>开票资料</text>
-			</view>
-		</view>
-		<view class="my-item flex-wrp" bindtap="bindVap">
-			<view class="myitem-icon flex-item">
-				<image src="../../images/vap.png"></image>
-			</view>
-			<view class="myitem-name flex-item">
-				<text>抗击新冠肺炎</text>
+				<text>学习资料</text>
 			</view>
 		</view>
 		
@@ -63,7 +46,7 @@
 				<image src="../../images/msg.png"></image>
 			</view>
 			<view class="myitem-name flex-item">
-				<input type="text" class="send_input" placeholder="留言告知OA最想要实现的功能" bindinput="userMsginput"></input>
+				<input type="text" class="send_input" placeholder="留言告知最想要实现的功能" bindinput="userMsginput"></input>
 				<button bindtap="setUserMsg" type="primary" disabled="{{isDisabled}}">提交留言</button>
 			</view>
 		</view>

@@ -51,7 +51,7 @@ Page({
 
         wx.setStorage({
           key: "userInfo",
-          data: res.userInfo
+          data: "xxx"
         })
 
       }

@@ -1,30 +1,31 @@
 <view class="container">
-  <view class="modal_container" bindtap="copyBill">
+  <view class="modal_container">
     <view class="modal_title">
-      玉环市第二人民医院健共体集团
+      小雨的美丽花园
     </view>
 
     <view class="modal_content">
       <view class="modal_c1">
-        <view class="modal_left">开票税号</view>
-        <view class="modal_right">12331 02147 28414 818</view>
+        <view class="modal_left">微信小程序</view>
+        <view class="modal_right">搜搜小雨的美丽花园查找</view>
       </view>
       <view class="modal_c1">
-        <view class="modal_left">开户银行</view>
-        <view class="modal_right">中国建设银行楚门支行</view>
+        <view class="modal_left">城市</view>
+        <view class="modal_right">浙江省玉环市</view>
       </view>
       <view class="modal_c1">
-        <view class="modal_left">银行账号</view>
-        <view class="modal_right">33001 66725 00500 00990</view>
+        <view class="modal_left">备注</view>
+        <view class="modal_right">欢迎给开发人员留言</view>
       </view>
       <view class="modal_bottom_box">
         <view class="modal_bottom">
-          点击文字复制开票信息
+     
         </view>
         <view class="modal_bottom">
-          点击右上角可分享发票给同事
+          点击右上角可分享
         </view>
       </view>
+
 
     </view>
   </view>

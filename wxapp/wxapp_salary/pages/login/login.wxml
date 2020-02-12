@@ -1,6 +1,6 @@
 <view class="container">
   <view class="c_block">
-    <view class="c_title">请输入二医信息系统账号和密码</view>
+    <view class="c_title">请输入账号和密码</view>
     <view>
       <input type="text" placeholder="输入账号" class="c_input" bindinput="userAccountInput"></input>
     </view>
