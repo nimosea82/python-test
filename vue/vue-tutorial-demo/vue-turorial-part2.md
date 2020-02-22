@@ -76,7 +76,7 @@
 		<div id="app">
 			<p v-if="man">是男人就学Vue</p>
 			<p v-else-if="women">是女人也要学Vue</p>
-			<p v-else>既然是动物就免学要学Vue了</p>
+			<p v-else>既然是动物就免学Vue了</p>
 			
 			<button v-on:click="man=true,women=false">是男人</button>
 			<button v-on:click="man=false,women=true">是女人</button>

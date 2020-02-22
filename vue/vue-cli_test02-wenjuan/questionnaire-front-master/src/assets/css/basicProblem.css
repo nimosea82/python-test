@@ -1,0 +1,30 @@
+#problem-right-type-tag {
+  margin-top: 30px;
+}
+
+#delete-problem-button {
+  margin-top: 23px;
+  margin-left: 8px;
+}
+
+.el-card__body {
+  padding-bottom: 8px;
+}
+
+.el-menu.el-menu--horizontal {
+  border-bottom: 0;
+}
+
+.el-scrollbar__thumb {
+  display: none;
+}
+
+/*全局隐藏elementui表单不美观的滚动条*/
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
