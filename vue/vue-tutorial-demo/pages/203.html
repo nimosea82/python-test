@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 引入vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>JavaScript对象</title>
+	</head>
+	<body>A
+		<div id="app">
+			<p>script对象person1</p>
+			<p>person1.name:{{name}}</p>
+			<p>person1.name:{{age}}</p>			
+
+		</div>
+		
+		<div id="app2">
+			<p>script对象person2</p>
+			<p>person2.name:{{name}}</p>
+			<p>person2.name:{{age}}</p>
+		</div>
+		
+		<script>
+			var person1 = new Object();
+			person1.name ="allen"
+			person1.age = 16
+	
+			var vm = new Vue({
+				el: "#app",
+				data:person1
+			})
+			
+			var person2 ={
+				name : "zhang san",
+				age : 22
+				
+			}
+			
+			var vm2 = new Vue({
+				el: "#app2",
+				data:person2
+			})
+						
+			
+			
+		</script>
+		
+	</body>
+</html>

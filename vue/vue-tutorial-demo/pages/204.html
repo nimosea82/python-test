@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 引入vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>JavaScript对象</title>
+	</head>
+	<body>A
+		<div id="app">
+			<p>script对象person</p>
+			<p>person.name:{{name}}</p>
+			<p>person.name:{{age}}</p>
+
+		</div>
+
+
+		<script>
+			var person = {
+				name: "allen",
+				age: 22
+
+			}
+
+			var vm = new Vue({
+				el: "#app",
+				data: person
+			})
+			
+			vm.$watch('name', function(newVal, oldVal) {
+				console.log('new is %s,old is %s', newVal, oldVal)
+			})
+			
+			vm.$data.name="Tom"
+		</script>
+
+	</body>
+</html>

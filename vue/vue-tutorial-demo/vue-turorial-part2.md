@@ -616,7 +616,8 @@ v-bind指令用给HTML标签设置属性
  以上效果一致
  
  ### v-on
-v-bind指令用给HTML标签设置属性
+v-on 绑定事件监听器。事件类型由参数指定。表达式可以是一个方法的名字或一个内联语句，如果没有修饰符也可以省略
+
 
 ```html
 <!-- 完整语法 -->
@@ -638,3 +639,50 @@ v-bind指令用给HTML标签设置属性
  <div v-on:click.self="doThat">...</div>
 ```
 
++ 新建立一个html，命名为318.html
++ 添加以下内容到html中
+
+```html
+		<div id="app">
+			<div v-on:click="click1">
+				<p>绑定v-on事件</p>
+			</div>
+			<div @click="click2">
+				<p>绑定v-on缩写@事件</p>
+			</div>
+		</div>
+		
+		<script>
+			var vm = new Vue({
+					el:"#app",
+					data:{
+						color1:"red",
+						color2:"blue"
+					},
+					methods:{
+						click1:function(){
+							console.log(this.color1)
+						},
+						click2:function(){
+							console.log(this.color2)
+						}
+						
+					}
+				
+				})
+			
+			
+		</script>
+```
+
+演示绑定点击事件
+
+
+### class与style绑定
+
+#### 绑定HTML Class
++ 新建立一个html，命名为319.html
+
+
+#### 绑定内联样式
++ 新建立一个html，命名为320.html
