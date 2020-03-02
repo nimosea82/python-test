@@ -16,7 +16,7 @@
 
 国际惯例，第一个实例从Hello World开始
 
-+ 新建立一个html，命名为101.html
++ 新建立一个html，命名为101HelloWorld.html
 + 添加以下内容到html中
 ```html
 		<!DOCTYPE html>

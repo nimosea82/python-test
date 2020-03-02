@@ -625,7 +625,7 @@ v-on 绑定事件监听器。事件类型由参数指定。表达式可以是一
 <!-- 缩写 -->
 <button @click="dothis"></button>
 
- <!-- 阻止单击事件冒泡 -->
+ <!-- 阻止单击事件冒泡,不触发div等其他标签的点击事件-->
  <a v-on:click.stop="doThis"></a>
  <!-- 提交事件不再重载页面 -->
  <form v-on:submit.prevent="onSubmit"></form>
@@ -686,3 +686,7 @@ v-on 绑定事件监听器。事件类型由参数指定。表达式可以是一
 
 #### 绑定内联样式
 + 新建立一个html，命名为320.html
+
+### v-on 事件修饰符
++ stop
++ pre
