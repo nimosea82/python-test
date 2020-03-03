@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<title>JavaScript函数测试</title>
+</head>
+
+<body>
+	<div id="app">
+		<p>fun1</p>
+		<p>{{ name }}</p>
+		<button @click="fun1()">fun1 click</button>
+
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				name: "allen",
+				age: 22
+			},
+			methods: {
+				fun1() {
+
+					var f1 = a => a
+					//等价于
+					// var f = function(a){
+					// return a;
+					// }
+					console.log(f1("张三"))
+
+					//等价于
+					// var f = function(a,b){
+					// return a+b;
+					// }
+					var f2 = (a, b) => a + b
+					console.log(f2(6, 2))
+
+					//回调函数内由多行代码需要｛｝		
+					var f3 = (a, b, c) => {
+						c = a + b;
+						return c * c;
+					}
+					console.log(f3(1, 2, 3))
+
+					var f4 = (a) => {
+						if (a <= 1) {
+							return 1;
+						}
+						else {
+							return a * f4(a - 1)
+						}
+					}
+
+					console.log(f4(1))
+					console.log(f4(2))
+					console.log(f4(3))
+					console.log(f4(4))
+
+					//箭头函数返回对象要用({..})包裹代码块
+					var f5 = (id, name) => ({
+						uid: id,
+						uName: name
+					})
+
+					// var Person = {
+					// 	firstName : "li",
+					// 	lastName : "allen",
+					// 	fullName : function(firstName,lastName) {
+					// 		return firstName + lastName
+					// 	}
+					// }	
+					
+					var Person ={
+						firstName : "li",
+						lastName : "allen",
+						fullName : (firstName) => {
+			
+							var fist = this.firstName;
+							var fn =(f) => {
+								return f + this.lastName
+							}
+							return fn.call({firstName:"wang"}, firstName)
+							
+						}
+					}
+					Person.fullName("hi")
+
+				},
+
+
+
+			}
+		})
+	</script>
+
+</body>
+
+</html>
