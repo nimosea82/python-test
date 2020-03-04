@@ -10,7 +10,8 @@
 |4|[javascript函数测试](#javascript函数测试)|[604.html](pages/604.html)|
 |5|[时间过滤器](#时间过滤器)|[606.html](pages/606.html)|
 |6|[自定义按键](#自定义按键)|[607.html](pages/607.html)|
-
+|7|[生命周期](#生命周期)|[607.html](pages/607.html)|
+|8|[vue请求](#vue请求)|[607.html](pages/607.html)|
 ## 跑马灯效果
 
 + 效果：实现文字滚动
@@ -37,3 +38,7 @@
 ## 自定义按键
 + 效果：实现按回车，F12自动触发按钮功能
 + 网址：新建立一个html，命名为607.html
+
+## vue请求
++ 效果：get post jsonp的请求
++ 网址：新建立一个html，命名为609.html
