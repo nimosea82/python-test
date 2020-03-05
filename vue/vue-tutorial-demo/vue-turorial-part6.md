@@ -10,8 +10,11 @@
 |4|[javascript函数测试](#javascript函数测试)|[604.html](pages/604.html)|
 |5|[时间过滤器](#时间过滤器)|[606.html](pages/606.html)|
 |6|[自定义按键](#自定义按键)|[607.html](pages/607.html)|
-|7|[生命周期](#生命周期)|[607.html](pages/607.html)|
-|8|[vue请求](#vue请求)|[607.html](pages/607.html)|
+|7|[生命周期](#生命周期)|[608.html](pages/608.html)|
+|8|[vue请求](#vue请求)|[609.html](pages/609.html)|
+
+## 案例
+
 ## 跑马灯效果
 
 + 效果：实现文字滚动
