@@ -1,46 +1,74 @@
 # vue基本教程
 
-## 深入了解组件
 	
-## 组件注册
+## 定义组件
 
-## 组件名
+组件是为来拆分页面，减少代码和重复编码
 
-在注册一个组件的时候，我们始终需要给它一个名字。比如在全局注册的时候我们已经看到了：
++ 模块化：是从代码逻辑的角度进行划分，方便代码分层开发，保证每个功能模块职能单一
++ 组件化：是从UI界面的角度进行划分，前端的组件化，方便UI组件的重用
+
+### 组件三种定义方式
+
+#### 全局注册
+
++ 新建立一个html，命名为501.html
++ 使用Vue.extend和Vue.component来定义全局组件
+
+
+#### 注册方式二
+
++ 新建立一个html，命名为502.html
++ 使用Vue.extend和Vue.component来定义全局组件
+
+```html
+		//全局一步注册到位
+		Vue.component('myCom1',Vue.extend({
+			template:'<h3>这个是用Vue extend创建的组件</h3>'
+		}))
+
 ```
-Vue.component('my-component-name', { /* ... */ })
+
+#### 另一种写法
+
++ 新建立一个html，命名为503.html
++ 使用Vue.extend和Vue.component来定义全局组件
+
+```html
+
+		Vue.component('myCom1',{
+			template:'<h3>这个是用Vue extend创建的组件</h3>'
+		})
+
 ```
 
-该组件名就是 Vue.component 的第一个参数,我们强烈推荐遵循 W3C 规范中的自定义组件名 (字母全小写且必须包含一个连字符)。这会帮助你避免和当前以及未来的 HTML 元素相冲突。
-你可以在 [风格指南](https://cn.vuejs.org/v2/style-guide/)中查阅到关于组件名的其它建议。
+### 组件根元素唯一
+
+template模板内容必须是有且唯一的根元素
+
+```
+<div>...</div>
+```
 
 
-## 全局注册
 
- ```
- Vue.component('my-component-name', { /* ... */ })
- ```
+#### 注册方式三
 
-以上实例为全局注册，在任何新创建的Vue根实例中都可以使用
++ 新建立一个html，命名为504.html
++ 使用Vue.extend和Vue.component来定义全局组件
 
-## 局部注册
+### 私有组件
 
-在这些情况下，你可以通过一个普通的 JavaScript 对象来定义组件：
+#### 私有组件案例
 
- ```
-var ComponentA = { /* ... */ }
-var ComponentB = { /* ... */ }
-var ComponentC = { /* ... */ }
- ```
- 
- 然后在 components 选项中定义你想要使用的组件：
- 
- ```
-new Vue({
-  el: '#app',
-  components: {
-    'component-a': ComponentA,
-    'component-b': ComponentB
-  }
-})
-  ```
++ 新建立一个html，命名为505.html
+
+### 组件属性data
+
++ data定义为一个function
++ 新建立一个html，命名为506.html
+
+### 父组件向子组件传值
+
++ data定义为一个function
++ 新建立一个html，命名为507.html

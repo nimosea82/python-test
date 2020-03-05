@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<script src="../static/js/vue-2.4.0.js"></script>
+	<link rel="stylesheet" href="../static/css/bootstrap-3.3.7.css">
+	</link>
+	<title>组件按钮</title>
+</head>
+
+<body>
+	<div id="app">
+
+		<div class="panel panel-primary">
+			<p>{{name}}</p>
+			<temp-button>				
+			</temp-button>
+			<p>2.{{name}}</p>
+			<component :is="'temp-button'"></component>
+			<p>3.父组件传值</p>
+			<!-- 父组件通过组件绑定的方式传递值给子组件 -->
+			<temp-button v-bind:pmsg="msg">				
+			</temp-button>
+		</div>
+
+
+
+
+	</div>
+
+	<template id='temp1'>
+		<div>
+			<p>{{title}}</p>
+			<p>{{count}}</p>
+			<p>parentmsg:{{ pmsg }}</p>
+			<input type="button" value="计数" @click="setCount">
+		</div>
+		
+	</template>
+
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				name: 'vue 组件按钮功能',
+				msg:'vue 父组件msg'
+			},
+			components: {
+				tempButton: {
+					template: '#temp1',
+					data() {
+						return {
+							title: '计算器',
+							count: 0
+						}
+					},
+					props: ['pmsg'],//以字符串的形式定义
+					methods: {
+						setCount(){
+							this.count ++
+						}
+					}
+				}
+
+			}
+		})
+	</script>
+
+</body>
+
+</html>

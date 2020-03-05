@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<title>组件定义</title>
+</head>
+
+<body>
+	<div id="app">
+
+		<login></login>
+		<logout></logout>
+
+	</div>
+
+	<template id="tmp2">
+		<div>
+			<p>私有组件：title</p>
+			<p>私有组件：content</p>
+		</div>
+	</template>
+	<script>
+
+		//全局一步注册到位，取消extend
+		Vue.component('myCom1',{
+			template:'#tmp1'
+		})
+
+		var vm = new Vue({
+			el:"#app",
+			data:{
+
+			},
+			components: {
+				//定义内部私有组件
+				login:{
+					template:'<h1>这个是一个私有的组件</h1>'
+				},
+				logout:{
+					template:'#tmp2'
+				}
+				
+			}
+			
+		})
+
+	</script>
+
+</body>
+
+</html>

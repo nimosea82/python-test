@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<script src="../static/js/vue-2.4.0.js"></script>
+	<title>组件定义</title>
+</head>
+
+<body>
+	<div id="app">
+
+		<login></login>
+
+	</div>
+	<script>
+		var vm = new Vue({
+			el:"#app",
+			data:{
+
+			},
+			components: {
+				//定义内部私有组件
+				login:{
+					template:'<div><h1>这个是一个私有的组件{{msg}}</h1><h2>{{title}}</h2></div>',
+					data:function(){
+						return {
+							msg:'这个是组件的data的msg',
+							title:'这个是组件data的title'
+							
+						}
+					}
+				},
+				
+			}
+			
+		})
+
+	</script>
+
+</body>
+
+</html>
