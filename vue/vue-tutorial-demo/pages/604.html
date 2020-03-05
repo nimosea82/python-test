@@ -12,6 +12,7 @@
 		<p>fun1</p>
 		<p>{{ name }}</p>
 		<button @click="fun1()">fun1 click</button>
+		<button @click="fun2()">fun2 click</button>
 
 	</div>
 
@@ -90,6 +91,19 @@
 					Person.fullName("hi")
 
 				},
+				fun2(){
+					let arr =[1,2,3,4]
+					var result = arr.map(x => x*x)
+					var result2 = arr.map(x => {
+						x = x * x
+						return x + x
+					})
+					console.log(result)
+					console.log(result2)
+					
+
+				},
+			
 
 
 
