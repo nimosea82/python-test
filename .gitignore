@@ -132,3 +132,6 @@ dmypy.json
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+# nmp
+/vue/webpack/webpack-demo/node_modules
