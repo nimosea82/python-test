@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 引入vue.js -->
+
+		<title>super</title>
+	</head>
+	<body>
+        <script>
+            class Person {
+                constructor(name) {
+                    this.name = name;
+                    console.log('父类的构造函数');
+                    
+                }
+                //添加类的方法
+                say(){
+                    console.log('my name is '+ this.name)
+                }
+            }
+
+            //子类编写父类的构造函数，出错
+            // class Student extends Person {
+            //     constructor(name){
+            //         this.name = name
+            //     }
+            // }
+
+            class Student extends Person {
+                constructor(name){
+                    super(name);  
+                    console.log('子类的构造函数');                                      
+                }
+            }           
+
+            var xm = new Student('小明')
+            xm.say()
+
+        </script>
+
+	</body>
+</html>
