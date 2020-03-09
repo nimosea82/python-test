@@ -6,20 +6,27 @@
 
 ### webpack4安装
 
-+ 全局安装：npm install  webpack -g
+
++ 全局安装：npm i webpack webpack-cli -g
 
 
-### 建立目录
+### 建立webpack环境
 
-+ 项目名称：建立文件夹webpack-demo
-+ 建立项目目录：
++ 项目名称：webpack-demo
 
-![](./images/readme-img/101_20200308180042.png)
++ 初始化npm安装包:npm init -y
+  - -y代表默认文件名字初始化
+  - 初始化后本地目录生成一个nmp包配置文件package.json
+  - 以后新建类似项目，可以直接复制package.json，这样可以自动下载包
 
-
-+ 初始化npm安装包:npm init
-
-+ 安装webpack-cli:我们在项目中本地安装webpack-cli：npm install webpack-cli -g
++ 如果package.json已存在可以应用以下命令进行包安装
+  - npm一键安装package.json里的所有依赖文件：`npm install`
+  - 只安装package.json里的dependencies（运行依赖）文件:npm `install --dependencies`
+  - 只安装开发依赖:`npm install --devDependencies`
+  - 更新依赖包到最新版本:npm install -g npm-check-updates
+  
++ 本地安装webpack
+  - 我们在项目中本地安装webpack：npm i webpack webpack-cli -D
 
 + 新建入口js：index.js
 
