@@ -61,8 +61,8 @@
 ```html
 <template>
   <!-- 组件页面 -->
-    <div>
-        <p class="vue1">{{ msg }}</p>
+    <div class="vue1">
+        {{ msg }}
     </div>
 </template>
 
@@ -82,8 +82,6 @@ export default {
 
 .vue1 {
   background-color: palegoldenrod;
-  color: green;
-  font-size: 30px;
 }
 </style>
 
@@ -104,6 +102,8 @@ export default {
  - lang="less":element-ui默认less为样式表,所以编译前，需要npm安装less组件
  
    `npm install less less-loader`
+   
+   也可以通过进入vue ui页面下，在项目依赖，开发依赖里，搜索 less less-loader进行图形化安装，需要重启动服务
 
 ### login组件注册
 
@@ -138,7 +138,7 @@ export default router
  - componet:组件名称
  
 #### 路由中name属性用法
->通过name属性，为一个页面中不同的router-view渲染不同的组件,如：将上面代码的`login`渲染在 name为`login`的router-view中，将`home`渲染在name为`home`的router-view中。不设置name的将为默认的渲染组件。
+>1.通过name属性，为一个页面中不同的router-view渲染不同的组件,如：将上面代码的`login`渲染在 name为`login`的router-view中，将`home`渲染在name为`home`的router-view中。不设置name的将为默认的渲染组件。
 
 ```html
 <template>
@@ -150,6 +150,31 @@ export default router
 </template>
 
 ```
+
+>2.可以用name传参 使用$router.name获取组件name值
+
+```html
+ <template>
+  <div id="app">
+    <p>{{ $route.name }}</p> //可以获取到渲染进来的组件的name值
+    <router-view></router-view>
+  </div>
+</template>
+
+```
+
+>3.用于pramas传参的引入 pramas必须用name来引入 query可以用name或者path来引入
+
+```html
+ var router = new VueRouter({
+      routes: [
+        { name:'register', path: '/register/:id/:name', component: register }
+      ]
+    })
+   <router-link :to="{name:'register',params:{id:10,name:'lili'}}">注册</router-link>
+
+```
+
 
 ### app.vue引入login组件
 
@@ -174,4 +199,77 @@ div中<router-view></router-view>添加路由组件占位符，启动app后默�
 
 ```
 
+
+## 编写login样式
+
+1. 编写全局容器样式，屏幕自动全屏
+2. 编写login容器样式，100%高
+
+### 编写全局容器样式
+
+#### 建立全局css文件
+
++ 名称：`global.css`
++ 地址：`src/assets/css/global.css`
++ 编写全局样式内容：
+
+ ```
+ /* 全局样式表 */
+ 
+ html, 
+ body, 
+ #app {
+     height: 100%;
+     margin: 0;
+     padding: 0;
+ }
+ 
+ ```
+
+#### 入口导入全局样式
+
+import './assets/css/global.css'
+
+#### 修改login的容器样式
+
+div修改样式为：`class="login_container"`
+
+建立一个`login_container`样式
+
+```html
+    <div class="login_container">
+        {{ msg }}
+    </div>	
+
+.login_container {
+    height: 100%;
+    background-color: #2b4b6b;
+}
+```
+
+
+
+## login登录盒子
+
+在 login.vue页面中
+
+
+```html
+<div class="login_box"></div>
+
+```
+
+```css
+.login_box {
+  width: 450px;
+  height: 300px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+```
 

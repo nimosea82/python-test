@@ -1,7 +1,7 @@
 <template>
   <!-- 组件页面 -->
-    <div>
-        <p class="vue1">{{ msg }}</p>
+    <div class="login_container">
+        <div class="login_box"></div>
     </div>
 </template>
 
@@ -19,9 +19,19 @@ export default {
 
 <style lang="less" scoped>
 
-.vue1 {
-  background-color: palegoldenrod;
-  color: green;
-  font-size: 30px;
+.login_container {
+  height: 100%;
+  background-color: #2b4b6b;
 }
+.login_box {
+  width: 450px;
+  height: 300px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
 </style>
