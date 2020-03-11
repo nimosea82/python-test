@@ -47,7 +47,7 @@
 
 项目主目录
 
-![主目录](images/readme-img/101_20200310203904.png)
+![](images/readme-img/101_20200310203904.png)
 
 + `main.js`:入口文件
 
@@ -251,6 +251,7 @@ div修改样式为：`class="login_container"`
 
 ## login登录盒子
 
+### 登录框样式
 在 login.vue页面中
 
 
@@ -272,4 +273,24 @@ div修改样式为：`class="login_container"`
 }
 
 ```
+
+### 登录框头像样式
+
+在上面基础上增加头像框样式
+
+```css
+.login_box {
+  width: 450px;
+  height: 300px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+```
+
+![](images/readme-img/103_20200311221819.png)
 
