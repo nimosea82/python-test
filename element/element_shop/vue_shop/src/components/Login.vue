@@ -9,11 +9,11 @@
       <el-form  label-width="0px" class="login_form">
         <!-- 账号输入 -->
         <el-form-item>
-          <el-input></el-input>
+          <el-input placeholder="请输入账号" v-model="account"></el-input>
         </el-form-item>
         <!-- 密码输入 -->
         <el-form-item>
-          <el-input></el-input>
+          <el-input placeholder="请输入密码" v-model="password"></el-input>
         </el-form-item>
         <!-- 按钮区 -->
         <el-form-item class="btns">
@@ -31,7 +31,8 @@
 export default {
   data () {
     return {
-      msg: '我是组件msg'
+      account: '',
+      password: ''
     }
   }
 }

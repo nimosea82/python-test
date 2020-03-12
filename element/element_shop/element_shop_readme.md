@@ -1,5 +1,17 @@
 # element vue shop
 
+## vscode小工具
+
++ 代码自动格式化
+ - 安装ESlint插件
+ - 设置保存自动代码格式化：打开setting json加入以下内容
+  ```
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+  ```
+
+
 ## 项目初始化
 
 ### 安装Vue脚手架
@@ -16,9 +28,10 @@
 + pick addtional lint：lint on save 开启
 
 ### 配置Element-UI库
+
 + 添加插件：vue-cli-plugin-element
 + 插件配置：fully import 修改为 import on demand
-+ 
+
 ### 配置axios库
 
 支持网络发起请求
@@ -200,7 +213,7 @@ div中<router-view></router-view>添加路由组件占位符，启动app后默�
 ```
 
 
-## 编写login样式
+## 编写样式
 
 1. 编写全局容器样式，屏幕自动全屏
 2. 编写login容器样式，100%高
@@ -282,15 +295,145 @@ div修改样式为：`class="login_container"`
 .login_box {
   width: 450px;
   height: 300px;
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 3px;
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+  .avatar_box {
+    height: 100px;
+    width: 100px;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 0 10px #ddd;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #eee;
+    }
+  }
 }
 
 ```
 
 ![](images/readme-img/103_20200311221819.png)
 
+### 正式启用element-ui
+
+### element-ui组件导入
+
++ 组件目录:`src/plugins/element.js`
++ 组件导入：element的组件是按需导入的，用到哪个控件导入哪控件
++ element.js里导入需要的组件
+
+```
+import Vue from 'vue'
+import { Button, Form, FormItem, Input } from 'element-ui'
+
+Vue.use(Button)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
+
+```
+
+### 登录框编写
+
+```html
+<template>
+  <!-- 组件页面 -->
+  <div class="login_container">
+    <div class="login_box">
+      <div class="avatar_box">
+        <img src="../assets/logo.png">
+      </div>
+      <!-- 登录表单区 -->
+      <el-form  label-width="0px" class="login_form">
+        <!-- 账号输入 -->
+        <el-form-item>
+          <el-input></el-input>
+        </el-form-item>
+        <!-- 密码输入 -->
+        <el-form-item>
+          <el-input></el-input>
+        </el-form-item>
+        <!-- 按钮区 -->
+        <el-form-item class="btns">
+           <el-button type="primary">确认</el-button>
+           <el-button>重置</el-button>
+        </el-form-item>
+      </el-form>
+
+    </div>
+  </div>
+</template>
+
+<script>
+// 组件脚本
+export default {
+  data () {
+    return {
+      msg: '我是组件msg'
+    }
+  }
+}
+
+</script>
+
+<style lang="less" scoped>
+.login_container {
+  height: 100%;
+  background-color: #2b4b6b;
+}
+
+.login_box {
+  width: 450px;
+  height: 300px;
+  background-color: #fff;
+  border-radius: 3px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  .avatar_box {
+    height: 100px;
+    width: 100px;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 0 10px #ddd;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #eee;
+    }
+  }
+}
+
+.login_form {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box ;
+}
+.btns {
+  display: flex;
+  justify-content: flex-end;
+}
+
+</style>
+
+```
