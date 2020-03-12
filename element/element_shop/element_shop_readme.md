@@ -437,3 +437,107 @@ export default {
 </style>
 
 ```
+
+### input图标使用
++ src/assets下建立fonts文件夹
++ 从阿里图标网上下载图标
++ 复制下载的内容到fonts文件夹中
++ main.js入口引入`import './assets/css/global.css'`
++ input控件引入图标:`<el-input prefix-icon="iconfont icon-icon-test16"></el-input>`
+
+### 为输入框绑定数据
+
++ form :model="数据对象"
+  
+ :model等于v-bind:model的缩写，是绑定自定义属性，它只是将父组件的数据传递给子组件，并没有实现父组件和子组件数据之间的双向绑定。
+
++ input v-model="数据对象.属性名"
+
+ v-model是组件与对象属性的双向绑定，对象属性改变来将直观的体现在组件中
+
+### 表单数据合法性验证
+
+鼠标离开组件的时候，自动验证表单的合法性，防止用户犯错，提早纠正错误
+
+```html
+      // 表单验证规则对象
+      loginFormRules: {
+        // 验证用户账户是否合法
+        account: [
+          { required: true, message: '请输入登录账号', trigger: 'blur' },
+          { min: 3, max: 5, message: '账号长度在 3 到 5 个字符', trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: '请输入登录密码', trigger: 'blur' },
+          { min: 6, max: 10, message: '账号长度在 6 到 10 个字符', trigger: 'blur' }
+        ]
+      }
+```
+
+### 表单重置事件
+
++ Form Methods
++ resetFields	对整个表单进行重置，将所有字段值重置为初始值并移除校验结果
+
+获得表单的实例对象，访问 resetFields的函数，重置表单，通过 `<el-form  ref="loginFormRef">`指定
+一个ref属性，来获得实例对象。
+
++ 给按钮添加一个点击事件
+
+```html
+ <el-button type="info" @click="resetLoginForm">重置</el-button>
+        </el-form-item>
+	
+		
+  methods: {
+    // 点击重置按钮，重置表单内容
+    resetLoginForm () {
+      // console.log(this.$refs)
+      this.$refs.loginFormRef.resetFields()
+    }
+  }
+
+```
+
+### 表单预验证
+
+表单提交的时候，对所有所填写的项目进行预验证
+
++ Form Methods
++ validate	对整个表单进行校验的方法，参数为一个回调函数。该回调函数会在校验结束后被调用，并传入两个参数：是否校验成功和未通过校验的字段。若不传入回调函数，则会返回一个 promise	Function(callback: Function(boolean, object))
++ 给确认按钮添加login函数
+```html
+    login () {
+      this.$refs.loginFormRef.validate(valid => {
+        if (valid) {
+          console.log('正常')
+        } else {
+          console.log('失败')
+        }
+      })
+    }
+```
+
+### message提示
+
++ 引入Message:`import { Message } from 'element-ui';`
++ 和其他控件不一样，他需要全局挂载
+
++ 全局挂载Message,$message
++ `Vue.prototype.$message = Message`
+
+```html
+        if (valid) {
+          console.log('正常')
+          return this.$message.success('登录成功')
+        } else {
+          console.log('失败')
+          return this.$message.error('登录失败')
+        }
+      })
+	  
+```
+## 网络请求
+
++ 导入axios：
++ 将包挂载到Vue的原型对象上：
