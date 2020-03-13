@@ -539,5 +539,136 @@ export default {
 ```
 ## 网络请求
 
-+ 导入axios：
-+ 将包挂载到Vue的原型对象上：
+### axios包导入
+
++ axios包导入
++ 挂载到Vue的原型$http上
++ 配置默认请求的地址
+
+```html
+import axios from 'axios'
+// 挂载到Vue的原型$http上
+Vue.prototype.$http = axios
+// 配置请求的地址
+axios.defaults.baseURL = 'https://wxapp.yh2j.com/api/'
+// axios.defaults.baseURL = 'http://localhost:8142/api/'
+```
+
+### 网络请求
+
++ 在vue的函数中建立网络请求函数，编写请求事件
++ get请求
+
+ ```html
+	 login () {
+		  this.$refs.loginFormRef.validate(valid => {
+			console.log('login')
+			if (valid) {
+			  var url = '/testapi'
+			  var data = {
+				params: {
+				  account: '7yaq55',
+				  password: '1046'
+
+				}
+			  }
+
+			  this.$http.get(url, data).then(res => {
+				console.log(res.data)
+				return this.$message.success('登录成功')
+			  }).catch(error => {
+				console.log(error)
+			  })
+			} else {
+			  return this.$message.error('登录失败')
+			}
+		  })
+		},
+ ```
+
++ POST请求
+ ```html
+	 this.$refs.loginFormRef.validate(valid => {
+			 if (valid) {
+			   console.log('loginPost')
+			   var url = '/testapi'
+			   this.$http.post(url, this.loginForm).then(res => {
+				 console.log(res.data)
+				 return this.$message.success('登录成功')
+			   }).catch(error => {
+				 console.log(error)
+			   })
+			 } else {
+			   return this.$message.error('登录失败')
+			 }
+		   })
+		 }
+ ```
+
+### 客户端的sessionStorage
+
+> TODO:需要研究前后端token机制
+
++ token保存到浏览器的sessionStorage
+ ```html
+window.sessionStorage.setItem('token', 'allen')
+ ```
+ 
++ 跳转页面
+
+ ```html
+this.$router.push('/home')
+ ```
+
+### 路由导航守卫
+
+未登陆状态下，访问禁止访问的页面，自动跳转到登陆页面
+
++ beforeEach 导航守卫
++ router/index.js下添加以下内容
+ 
+ ```html
+ // 挂载路由导航守卫
+ 
+ router.beforeEach((to, from, next) => {
+   // to 将要访问的路径
+   // from 代表从哪个路径跳转而来
+   // next 是一个函数，表示放行
+   // next()是放行，next('/login')是强制跳转
+   if (to.path === '/login') return next()
+   // 获取token
+   const tokenStr = window.sessionStorage.getItem('token')
+   // token不存在直接跳转到login
+   if (!tokenStr) return next('/login')
+   // token存在，放行
+   next()
+ })
+ ```
+ 
+ ### 退出机制
+ 
+ + 清空token
+ + 跳转到登陆页面
+ 
+```     logout () {
+       window.sessionStorage.clear()
+       this.$router.push('/login')
+     }
+```
+
+## 页面布局
+
+element-ui上找Container 布局容器
+```
+<el-container class="home-container">
+        <!-- 头部区域 -->
+    <el-header>Header</el-header>
+    <!-- 页面主体区域 -->
+    <el-container>
+        <!-- 页面侧边栏 -->
+        <el-aside width="200px">Aside</el-aside>
+        <!-- 内容主题 -->
+        <el-main>Main</el-main>
+    </el-container>
+    </el-container>
+```

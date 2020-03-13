@@ -13,8 +13,8 @@ import axios from 'axios'
 // 挂载到Vue的原型$http上
 Vue.prototype.$http = axios
 // 配置请求的地址
-// axios.defaults.baseURL = 'https://wxapp.yh2j.com/api/'
-axios.defaults.baseURL = 'https://wxapp.yh2j.com/api/dd/'
+axios.defaults.baseURL = 'https://wxapp.yh2j.com/api/'
+// axios.defaults.baseURL = 'http://localhost:8142/api/'
 
 Vue.config.productionTip = false
 

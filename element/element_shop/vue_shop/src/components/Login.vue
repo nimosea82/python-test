@@ -17,7 +17,8 @@
         </el-form-item>
         <!-- 按钮区 -->
         <el-form-item class="btns">
-           <el-button type="primary" @click="login">确认</el-button>
+           <el-button type="primary" @click="login">确认Get</el-button>
+           <el-button type="primary" @click="loginPost">确认Post</el-button>
            <el-button type="info" @click="resetLoginForm">重置</el-button>
         </el-form-item>
       </el-form>
@@ -33,10 +34,8 @@ export default {
     return {
       // 这个登录数据表单绑定的对象
       loginForm: {
-        account: '',
-        password: '',
-        app_token: '123',
-        code: '123'
+        account: 'admin',
+        password: '12342'
       },
       // 表单验证规则对象
       loginFormRules: {
@@ -60,17 +59,45 @@ export default {
       this.$refs.loginFormRef.resetFields()
     },
     login () {
-      this.$refs.loginFormRef.validate(async valid => {
+      this.$refs.loginFormRef.validate(valid => {
+        console.log('login')
         if (valid) {
-          // console.log('正常')
-          const result = await this.$http.post('binduser', this.loginForm)
-          console.log(result)
-          console.log(this.loginForm)
+          var url = '/testapi'
+          var data = {
+            params: {
+              account: '7yaq55',
+              password: '1046'
 
-          return this.$message.success('登录成功')
+            }
+          }
+
+          this.$http.get(url, data).then(res => {
+            console.log(res)
+            return this.$message.success('登录成功')
+          }).catch(error => {
+            console.log(error)
+          })
         } else {
-          // console.log('失败')
-          console.log(this.loginForm)
+          return this.$message.error('登录失败')
+        }
+      })
+    },
+    loginPost () {
+      this.$refs.loginFormRef.validate(valid => {
+        if (valid) {
+          console.log('loginPost')
+          var url = '/testapi'
+          this.$http.post(url, this.loginForm).then(res => {
+            // console.log(res)
+            this.$message.success('登录成功')
+            // 保存到sessionStorage
+            window.sessionStorage.setItem('token', 'allen')
+            // 页面跳转
+            this.$router.push('/home')
+          }).catch(error => {
+            console.log(error)
+          })
+        } else {
           return this.$message.error('登录失败')
         }
       })
