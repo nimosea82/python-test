@@ -17,7 +17,7 @@ const router = new VueRouter({
   routes
 })
 
-// 挂载路由导航守卫
+// 挂载路由导航守卫,访问没有权限的页面返回登录页面
 
 router.beforeEach((to, from, next) => {
   // to 将要访问的路径

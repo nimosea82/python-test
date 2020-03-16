@@ -8,8 +8,8 @@
       <!-- 登录表单区 -->
       <el-form  ref="loginFormRef" :model="loginForm" :rules="loginFormRules" label-width="0px" class="login_form">
         <!-- 账号输入 -->
-        <el-form-item prop="account">
-          <el-input prefix-icon="iconfont icon-icon-test16" placeholder="请输入账号" v-model="loginForm.account"></el-input>
+        <el-form-item prop="username">
+          <el-input prefix-icon="iconfont icon-icon-test16" placeholder="请输入账号" v-model="loginForm.username"></el-input>
         </el-form-item>
         <!-- 密码输入 -->
         <el-form-item prop="password">
@@ -17,7 +17,7 @@
         </el-form-item>
         <!-- 按钮区 -->
         <el-form-item class="btns">
-           <el-button type="primary" @click="login">确认Get</el-button>
+           <!-- <el-button type="primary" @click="loginGet">确认Get</el-button> -->
            <el-button type="primary" @click="loginPost">确认Post</el-button>
            <el-button type="info" @click="resetLoginForm">重置</el-button>
         </el-form-item>
@@ -34,13 +34,13 @@ export default {
     return {
       // 这个登录数据表单绑定的对象
       loginForm: {
-        account: 'admin',
-        password: '12342'
+        username: 'admin',
+        password: '123456'
       },
       // 表单验证规则对象
       loginFormRules: {
         // 验证用户账户是否合法
-        account: [
+        username: [
           { required: true, message: '请输入登录账号', trigger: 'blur' },
           { min: 3, max: 15, message: '账号长度在 3 到 5 个字符', trigger: 'blur' }
         ],
@@ -58,20 +58,13 @@ export default {
       // console.log(this.$refs)
       this.$refs.loginFormRef.resetFields()
     },
-    login () {
+    loginGet () {
       this.$refs.loginFormRef.validate(valid => {
         console.log('login')
         if (valid) {
-          var url = '/testapi'
-          var data = {
-            params: {
-              account: '7yaq55',
-              password: '1046'
+          var url = '/login'
 
-            }
-          }
-
-          this.$http.get(url, data).then(res => {
+          this.$http.get(url, this.loginForm).then(res => {
             console.log(res)
             return this.$message.success('登录成功')
           }).catch(error => {
@@ -83,22 +76,19 @@ export default {
       })
     },
     loginPost () {
-      this.$refs.loginFormRef.validate(valid => {
-        if (valid) {
-          console.log('loginPost')
-          var url = '/testapi'
-          this.$http.post(url, this.loginForm).then(res => {
-            // console.log(res)
-            this.$message.success('登录成功')
-            // 保存到sessionStorage
-            window.sessionStorage.setItem('token', 'allen')
-            // 页面跳转
-            this.$router.push('/home')
-          }).catch(error => {
-            console.log(error)
-          })
+      this.$refs.loginFormRef.validate(async valid => {
+        if (!valid) return
+        // { data: res } 等同于 res = (返回对象).data
+        const { data: res } = await this.$http.post('login', this.loginForm)
+        if (res.meta.status === 200) {
+          console.log(res)
+          // 1.保存服务器的token到 sessionStorage中
+          window.sessionStorage.setItem('token', res.data.token)
+          // 2. 编程式导航跳转到主页/home
+          this.$router.push('/home')
+          return this.$message.success('登录成功')
         } else {
-          return this.$message.error('登录失败')
+          return this.$message.error(res.meta.msg)
         }
       })
     }

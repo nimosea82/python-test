@@ -1,29 +1,53 @@
 <template>
-
-    <el-container class="home-container">
-        <!-- 头部区域 -->
+  <el-container class="home-container">
+    <!-- 头部区域 -->
     <el-header>
-        <div>
-            <img src="../assets/images/head.png" alt="">
-            <span>米创信息系统</span>
-        </div>
-        <el-button type="info" @click="logout">退出</el-button>
+      <div>
+        <img src="../assets/images/head.png" alt />
+        <span>米创信息系统</span>
+      </div>
+      <el-button type="info" @click="logout">退出</el-button>
     </el-header>
     <!-- 页面主体区域 -->
     <el-container>
-        <!-- 页面侧边栏 -->
-        <el-aside width="200px"></el-aside>
-        <!-- 内容主题 -->
-        <el-main></el-main>
+      <!-- 页面侧边栏 -->
+      <el-aside width="200px">
+        <!-- 侧边栏菜单区 -->
+        <el-menu background-color="#333744" text-color="#fff" active-text-color="#ffd04b">
+          <!-- 一级菜单 -->
+          <el-submenu index="1">
+            <!-- 一级菜单模板区 -->
+            <template slot="title">
+              <!-- i是图标 -->
+              <i class="el-icon-location"></i>
+              <!-- span是文本 -->
+              <span>导航一</span>
+            </template>
+            <!-- 二级菜单 -->
+            <el-menu-item index="2-1">
+              <template slot="title">
+                <!-- i是二级图标 -->
+                <i class="el-icon-location"></i>
+                <!-- span是二级文本 -->
+                <span>二级文本</span>
+              </template>
+            </el-menu-item>
+          </el-submenu>
+        </el-menu>
+      </el-aside>
+      <!-- 内容主题 -->
+      <el-main></el-main>
     </el-container>
-    </el-container>
+  </el-container>
 </template>
 
 <script>
 export default {
   methods: {
     logout () {
+      // 退出原理，销毁token
       window.sessionStorage.clear()
+      // 跳转到登录页
       this.$router.push('/login')
     }
   }
@@ -32,39 +56,38 @@ export default {
 
 <style lang="less" scoped>
 .home-container {
-    height: 100%;
+  height: 100%;
 }
 
 .el-header {
-    background-color:#373D41 ;
+  background-color: #373d41;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10;
+  align-items: center;
+  color: #ffffff;
+  font-size: 20px;
+  > div {
     display: flex;
-    justify-content: space-between;
-    padding-left: 10;
     align-items: center;
-    color: #ffffff;
-    font-size: 20px;
-    > div {
-        display: flex;
-        align-items: center;
-        span {
-            margin-left: 15px;
-        }
-        >img {
-            height: 40px;
-            width: 40px;
-            border: solid 1px gray;
-            border-radius:  8%;
-            box-shadow: 0 0 2px #ddd;
-        }
+    span {
+      margin-left: 15px;
     }
-
+    > img {
+      height: 40px;
+      width: 40px;
+      border: solid 1px gray;
+      border-radius: 8%;
+      box-shadow: 0 0 2px #ddd;
+    }
+  }
 }
 
 .el-aside {
-    background-color:#333744 ;
+  background-color: #333744;
 }
 
 .el-main {
-    background-color:#EAEDF1 ;
+  background-color: #eaedf1;
 }
 </style>
