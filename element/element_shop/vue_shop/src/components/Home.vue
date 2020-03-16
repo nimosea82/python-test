@@ -13,23 +13,23 @@
       <!-- 页面侧边栏 -->
       <el-aside width="200px">
         <!-- 侧边栏菜单区 -->
-        <el-menu background-color="#333744" text-color="#fff" active-text-color="#ffd04b">
+        <el-menu background-color="#333744" text-color="#fff" active-text-color="#409EFF">
           <!-- 一级菜单 -->
-          <el-submenu index="1">
+          <el-submenu :index="item.id + ''" v-for="item in menulist" :key="item.id">
             <!-- 一级菜单模板区 -->
             <template slot="title">
               <!-- i是图标 -->
-              <i class="el-icon-location"></i>
+              <i :class="iconObj[item.id]"></i>
               <!-- span是文本 -->
-              <span>导航一</span>
+              <span>{{ item.authName }}</span>
             </template>
             <!-- 二级菜单 -->
-            <el-menu-item index="2-1">
+            <el-menu-item :index="subitem.id + ''" v-for="subitem in item.children" :key="subitem.id">
               <template slot="title">
                 <!-- i是二级图标 -->
-                <i class="el-icon-location"></i>
+                <i class="el-icon-menu"></i>
                 <!-- span是二级文本 -->
-                <span>二级文本</span>
+                <span>{{ subitem.authName }}</span>
               </template>
             </el-menu-item>
           </el-submenu>
@@ -43,12 +43,35 @@
 
 <script>
 export default {
+  data () {
+    return {
+      menulist: [],
+      iconObj: {
+        125: 'el-icon-user-solid',
+        103: 'el-icon-s-ticket',
+        102: 'el-icon-s-open',
+        101: 'el-icon-camera-solid',
+        145: 'el-icon-s-help'
+
+      }
+    }
+  },
+  created () {
+    this.getMenuList()
+  },
   methods: {
     logout () {
       // 退出原理，销毁token
       window.sessionStorage.clear()
       // 跳转到登录页
       this.$router.push('/login')
+    },
+    async getMenuList () {
+      // 获得用户左边菜单权限,采用async和await写法
+      const { data: res } = await this.$http.get('menus')
+      if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
+      this.menulist = res.data
+      console.log(res)
     }
   }
 }
