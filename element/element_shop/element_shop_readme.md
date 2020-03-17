@@ -674,4 +674,61 @@ element-ui上找Container 布局容器
 ```
 
 ### 左侧菜单布局
+### 通过接口获得菜单数据
 
+通过axios请求拦截器添加token，在main.js中添加以下内容
+
+```html
+// 添加api请求头，附带token
+axios.interceptors.request.use(config => {
+  console.log(config)
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
+})
+```
+### 发起请求获得左侧菜单
+
++ 在created的事件中，调用api接口事件
++ 访问api接口menus获取菜单接口，菜单请求返回值赋值到data数据对象menulist中
+
+```
+    async getMenuList () {
+      // 获得用户左边菜单权限,采用async和await写法
+      const { data: res } = await this.$http.get('menus')
+      if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
+      this.menulist = res.data
+      console.log(res)
+```
+
++ 绘制菜单
++ 一级菜单for循环
+```
+ <el-submenu :index="item.id + '' " v-for="item in menulist" :key="item.id">
+ 
+```
+ - `:index="item.id`:绑定index唯一值，后面会变，index不接受数据，所以后面采用`+ ''`的方式拼接一个字符串
+ - `v-for="item in menulist" :key="item.id"`:v-for循环出所有的一级菜单数据,绑定一个key
+
++ 二级菜单for循环
+
+```
+<el-menu-item :index="subitem.id + ''" v-for="subitem in item.children" :key="subitem.id">
+
+```
+
++ 添加分类字体图标和子菜单激活颜色
+
++ 保持一个菜单打开：unique-opened是否只保持一个子菜单的展开
++ 菜单折叠和展开：collapse	是否水平折叠收起菜单（仅在 mode 为 vertical 时可用）
++ collapse-transition	是否开启折叠动画	boolean false
++ 路由占位符，内容区 `<el-main>  <router-view></router-view>`
++ 默认选中保持菜单到setion
+## 用户管理
+
+### 用户列表
+
+绘制用户列表ui结构
+
++ 面包屑导航区域
++ 
