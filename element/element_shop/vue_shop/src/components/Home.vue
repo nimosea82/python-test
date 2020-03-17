@@ -11,9 +11,20 @@
     <!-- 页面主体区域 -->
     <el-container>
       <!-- 页面侧边栏 -->
-      <el-aside width="200px">
+      <el-aside :width="isCollapse ? '64px' : '200px'">
+        <!-- 折叠按钮 -->
+        <div class="toggle-button" @click="toggleCollapse">|||</div>
         <!-- 侧边栏菜单区 -->
-        <el-menu background-color="#333744" text-color="#fff" active-text-color="#409EFF">
+        <el-menu
+          :collapse="isCollapse"
+          background-color="#333744"
+          text-color="#fff"
+          active-text-color="#409EFF"
+          :unique-opened="true"
+          :collapse-transition="false"
+          router
+          :default-active="activePath"
+        >
           <!-- 一级菜单 -->
           <el-submenu :index="item.id + ''" v-for="item in menulist" :key="item.id">
             <!-- 一级菜单模板区 -->
@@ -24,7 +35,12 @@
               <span>{{ item.authName }}</span>
             </template>
             <!-- 二级菜单 -->
-            <el-menu-item :index="subitem.id + ''" v-for="subitem in item.children" :key="subitem.id">
+            <el-menu-item
+              :index="'/' + subitem.path"
+              v-for="subitem in item.children"
+              :key="subitem.id"
+              @click="saveNavState('/' + subitem.path)"
+            >
               <template slot="title">
                 <!-- i是二级图标 -->
                 <i class="el-icon-menu"></i>
@@ -36,7 +52,10 @@
         </el-menu>
       </el-aside>
       <!-- 内容主题 -->
-      <el-main></el-main>
+      <el-main>
+        <!-- 路由占位符 -->
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -52,12 +71,16 @@ export default {
         102: 'el-icon-s-open',
         101: 'el-icon-camera-solid',
         145: 'el-icon-s-help'
-
-      }
+      },
+      // 菜单是否折叠
+      isCollapse: false,
+      // 被激活的链接地址
+      activePath: ''
     }
   },
   created () {
     this.getMenuList()
+    this.activePath = window.sessionStorage.getItem('activePath')
   },
   methods: {
     logout () {
@@ -72,6 +95,14 @@ export default {
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
       this.menulist = res.data
       console.log(res)
+    },
+    toggleCollapse () {
+      // 点击按钮切换折叠和展开
+      this.isCollapse = !this.isCollapse
+    },
+    saveNavState (activePath) {
+      window.sessionStorage.setItem('activePath', activePath)
+      this.activePath = activePath
     }
   }
 }
@@ -112,5 +143,15 @@ export default {
 
 .el-main {
   background-color: #eaedf1;
+}
+
+.toggle-button {
+  background-color: #4a5064;
+  font-size: 10px;
+  line-height: 24px;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0.2em;
+  cursor: pointer;
 }
 </style>

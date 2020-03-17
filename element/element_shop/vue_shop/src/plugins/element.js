@@ -1,6 +1,28 @@
 import Vue from 'vue'
-import { Menu, Submenu, MenuItem, Button, Form, FormItem, Input, Message, Container, Header, Aside, Main } from 'element-ui'
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  Menu,
+  Submenu,
+  MenuItem,
+  Button,
+  Form,
+  FormItem,
+  Input,
+  Message,
+  Container,
+  Header,
+  Aside,
+  Main,
+  Card,
+  Row,
+  Col,
+  Table,
+  TableColumn
+} from 'element-ui'
 
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
 Vue.use(Menu)
 Vue.use(Submenu)
 Vue.use(MenuItem)
@@ -12,6 +34,11 @@ Vue.use(Container)
 Vue.use(Header)
 Vue.use(Aside)
 Vue.use(Main)
+Vue.use(Card)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Table)
+Vue.use(TableColumn)
 
 // 全局挂载Message,$message
 Vue.prototype.$message = Message

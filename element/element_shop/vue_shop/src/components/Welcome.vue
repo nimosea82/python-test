@@ -1,11 +1,10 @@
 <template>
-  <div>
-      <h1>helo Vue</h1>
-  </div>
+  <div><h3>welcome hello </h3></div>
 </template>
 
 <script>
 export default {
+
 }
 </script>
 
