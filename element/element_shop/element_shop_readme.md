@@ -731,4 +731,28 @@ axios.interceptors.request.use(config => {
 绘制用户列表ui结构
 
 + 面包屑导航区域
-+ 
+
+### 作用域插槽
+
+scope.row 代表单前行的值
+
+```html
+        <el-table-column prop="is_active" label="状态">
+          <!-- 作用域插槽 -->
+          <template v-slot="scope">
+              {{ scope.row }}
+          </template>
+        </el-table-column>
+```
+
+### 提示框
+
+```
+enterable	鼠标是否可进入到 tooltip 中	Boolean	—
+           <el-tooltip effect="dark" content="分配用户角色" placement="top-start">
+              <el-button type="warning" icon="el-icon-setting" circle size="small"></el-button>
+            </el-tooltip>
+```
+
+### 分页显示效果
+

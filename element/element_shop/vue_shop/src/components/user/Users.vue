@@ -22,15 +22,41 @@
       </el-row>
 
       <!-- 数据表格 -->
-      <el-table :data="userList" style="width: 100%" border stripe >
-        <el-table-column type="index"  label="序号"></el-table-column>
+      <el-table :data="userList" style="width: 100%" border stripe>
+        <el-table-column type="index" label="序号"></el-table-column>
         <el-table-column prop="username" label="姓名" width="180"></el-table-column>
         <el-table-column prop="email" label="邮箱" width="180"></el-table-column>
         <el-table-column prop="mobile" label="电话"></el-table-column>
         <el-table-column prop="role_name" label="角色"></el-table-column>
-        <el-table-column prop="is_active" label="状态"></el-table-column>
-        <el-table-column label="操作"></el-table-column>
+        <el-table-column prop="is_active" label="状态">
+          <!-- 作用域插槽 -->
+          <template v-slot="scope">
+            <el-switch v-model="scope.row.mg_state" active-color="#13ce66" inactive-color="#EAEDF1"></el-switch>
+          </template>
+        </el-table-column>
+        <el-table-column label="操作" width="180px">
+          <!-- 操作按钮数据渲染 -->
+          <template>
+            <!-- 修改按钮 -->
+            <el-button type="primary" icon="el-icon-edit" circle size="small "></el-button>
+            <!-- 删除按钮 -->
+            <el-button type="danger" icon="el-icon-delete" circle size="small"></el-button>
+            <!-- 分配角色按钮 -->
+            <el-tooltip effect="dark" content="分配用户角色" placement="top-start" :enterable="false">
+              <el-button type="warning" icon="el-icon-setting" circle size="small"></el-button>
+            </el-tooltip>
+          </template>
+        </el-table-column>
       </el-table>
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="queryInfo.pagenum"
+        :page-sizes="[1, 2, 5, 10]"
+        :page-size="queryInfo.pagesize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+      ></el-pagination>
     </el-card>
   </div>
 </template>
@@ -46,7 +72,9 @@ export default {
       // 参数对象
       queryInfo: {
         query: '',
+        // 当前页数
         pagenum: 1,
+        // 当前每页显示多少条数据
         pagesize: 4
       },
       total: 0,
@@ -67,6 +95,18 @@ export default {
       this.userList = res.data.users
       this.total = res.data.total
       console.log(this.userList)
+    },
+    // 监听页码值的改变
+    handleCurrentChange (newPage) {
+      console.log(newPage)
+      this.queryInfo.pagenum = newPage
+      this.getUserList()
+    },
+    // 监听pagesize一页显示多少行的改变
+    handleSizeChange (newSize) {
+      console.log(newSize)
+      this.queryInfo.pagesize = newSize
+      this.getUserList()
     }
   }
 }
