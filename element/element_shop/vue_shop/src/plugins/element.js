@@ -21,7 +21,8 @@ import {
   TableColumn,
   Switch,
   Tooltip,
-  Pagination
+  Pagination,
+  Dialog
 } from 'element-ui'
 
 Vue.use(Breadcrumb)
@@ -46,6 +47,7 @@ Vue.use(Switch)
 Vue.use(Tooltip)
 Vue.use(Switch)
 Vue.use(Pagination)
+Vue.use(Dialog)
 
 // 全局挂载Message,$message
 Vue.prototype.$message = Message

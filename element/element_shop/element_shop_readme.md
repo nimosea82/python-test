@@ -756,3 +756,41 @@ enterable	鼠标是否可进入到 tooltip 中	Boolean	—
 
 ### 分页显示效果
 
+### 搜索功能
+
+```html   <el-input
+            placeholder="请输入筛选内容"
+            v-model="queryInfo.query"
+            clearable
+            @clear="getUserList"
+            :maxlength="20"
+            @change="getUserList">
+            <el-button slot="append" icon="el-icon-search" @click="getUserList"></el-button>
+          </el-input>
+```
+
+### 添加用户对话框
+
+```html
+    <!-- 添加用户对话框 -->
+    <el-dialog title="提示" :visible.sync="addDialogVisible" width="50%" >
+      <!-- 内容主体区 -->
+      <span>内容主体区</span>
+      <!-- 底部按钮区 -->
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="addDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="addDialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
+```
+
+### 表单重置
+
+```
+    addDialogClosed () {
+      // refs引用
+      this.$refs.addUserFormRef.resetFields()
+    },
+	
+```
+	

@@ -139,6 +139,9 @@ export default {
 
 .el-aside {
   background-color: #333744;
+  .el-menu{
+    border-right: none;
+  }
 }
 
 .el-main {
