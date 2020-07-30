@@ -1,5 +1,10 @@
 # vue-cli4使用教程
 vue-cli是vue的脚手架，自动化生产vue项目目录,目前最新版本4；
+## 安装npm
+#### 安装淘宝镜像
+
+ npm install -g cnpm --registry=https://registry.npm.taobao.org
+ 
 ## vue-cli4安装
 >通过npm安装vue-cli4
 
